@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://java.sun.com/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <h:form id="registerForm">
+                    <h:messages for="registerForm"/>
+                    <div class="container-fluid login-container">
+                        <div styleClass="img-header"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="link-create"><i class="fas fa-chevron-circle-right c-icon-link"></i>#{msg.register_Question} <h:link outcome="/login" class="">#{msg.signin}</h:link></p>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="title-rg pt-5 pb-4">#{msg.login_create}</p>
+                                <div class="box-register">
+                                    <div class="container-register">
+                                        <h6 class="if-register">#{msg.register_title}</h6>
+                                        <div class="row mt-5">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.checkFirst}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputText value="#{registerMB.userReg.userFName}" id="fname" styleClass="input-register" a:placeholder="#{msg.register_FEnter}" />
+                                                <h:messages for="fname" style="color: red"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.checkLast}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputText value="#{registerMB.userReg.userLName}" id="lname" styleClass="input-register" a:placeholder="#{msg.register_LEnter}" />
+                                                <h:messages for="lname" style="color: red"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.register_User}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputText value="#{registerMB.userReg.userName}" id="user" styleClass="input-register" a:placeholder="#{msg.register_UserEnter}" />
+                                                <h:messages for="user" style="color: red"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.register_Email}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputText value="#{registerMB.userReg.userEmail}" id="email" styleClass="input-register" a:placeholder="#{msg.register_EmailEnter}" />
+                                                <h:messages for="email" style="color: red"/>
+                                                <label class="note-name">*#{msg.register_EmailNote}.</label>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.login_pass}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputSecret value="#{registerMB.pass}" id="password" styleClass="input-register" a:placeholder="#{msg.register_PassEnter}" />
+                                                <h:messages for="password" style="color: red"/>
+                                                <span class="eye_icon icon-register" onclick="togglelity()">
+                                                    <span id="showaIcon"><i class="fa-solid fa-eye"></i></span>
+                                                    <span id="hideaIcon" style="display:none;"><i class="fa-solid fa-eye-slash"></i></span>
+                                                </span>
+                                                <div class="c-formErrorMg">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.register_Confirm}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputSecret value="#{registerMB.confirmPass}" id="confirmRegister" styleClass="input-register" a:placeholder="#{msg.register_ConfirmEnter}" />
+                                                <h:messages for="confirmRegister" style="color: red"/>
+                                                <span class="eye_icon icon-register" onclick="toggleConfirmVisibility()">
+                                                    <span id="conshowIcon"><i class="fa-solid fa-eye"></i></span>
+                                                    <span id="conhideIcon" style="display:none;"><i class="fa-solid fa-eye-slash"></i></span>
+                                                </span>
+                                                <div class="c-formErrorMg">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.register_Age}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputText value="#{registerMB.userReg.userAge}" id="age" styleClass="input-register" a:placeholder="#{msg.register_AgeEnter}" />
+                                                <h:messages for="age" style="color: red"/>
+
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.checkPhone}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputText value="#{registerMB.userReg.userPhone}" id="phone" styleClass="input-register" a:placeholder="#{msg.register_PhoneEnter}" />
+                                                <h:messages for="phone" style="color: red"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.register_Gender}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:selectOneMenu id="gender" value="#{registerMB.userReg.userGender}" styleClass="input-register">
+                                                    <f:selectItem itemValue="None" itemLabel="#{msg.register_GSelec}"/>
+                                                    <f:selectItem itemValue="Male" itemLabel="#{msg.register_GMale}"/>
+                                                    <f:selectItem itemValue="Female" itemLabel="#{msg.register_GFemale}"/>
+                                                    <f:selectItem itemValue="Unknown" itemLabel="#{msg.register_GUn}"/>
+                                                </h:selectOneMenu>
+                                                <h:messages for="gender" style="color: red"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.checkPP}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputText value="#{registerMB.userReg.passPort}" id="passport" styleClass="input-register" a:placeholder="#{msg.register_PPEnter}" />
+                                                <h:messages for="passport" style="color: red"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> #{msg.checkAdd}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h:inputText value="#{registerMB.userReg.userAddress}" id="address" styleClass="input-register" a:placeholder="#{msg.register_AddEnter}" />
+                                                <h:messages for="address" style="color: red"/>
+                                            </div>
+                                        </div>
+                                        <div class="registerform-group">
+                                            <div class="flex-searched">
+                                                <div class="check-like">
+                                                    <i class="fas fa-check icon-check-like"></i>
+                                                </div>
+                                                <p class="text-check-like">#{msg.register_Check1}.</p>
+                                            </div>
+                                        </div>
+                                        <div class="c-btnBlock mt-5 mb-5">
+                                            <h:commandLink action="#{registerMB.registerUser()}" type="submit" class="c-btn c-btn-medium text-decoration-none c-btn-danger" id="account-login-button">
+                                                #{msg.regiter_btnRegister}
+                                            </h:commandLink>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var fullUrl = window.location.href;
+                        if (fullUrl === 'http://localhost:8081/SunSeekers-war/faces/client/register.xhtml') {
+                            var header = document.getElementById('header');
+                            var nav = document.querySelectorAll('#nav li a');
+                            var logingr = document.querySelectorAll('.login-group a');
+                            var color = document.querySelector('.signin_class .btn-outline-light');
+                            var span = document.querySelector('.signin_class span');
+                            header.style.background = "#fff";
+                            nav.forEach(element => {
+                                element.style.color = '#383838';
+                            });
+                            logingr.forEach(element => {
+                                element.style.color = '#383838';
+                            });
+                            color.style.border = '1px solid #383838';
+                            span.style.color = '#383838';
+                        }
+                        ;
+                    </script>
+                    <h:outputScript library="js" name="registerJs.js"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

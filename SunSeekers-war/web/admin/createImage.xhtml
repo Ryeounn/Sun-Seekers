@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Create New Image</p>
+                            <h:form enctype="multipart/form-data">
+                                <div class="jdopawJwe-container">
+                                    <div class="jdopawJwe-box">
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Information Image</h6>
+                                                <p class="black-flag label-register"> Image 1</p>
+                                                <h:inputFile value="#{imagesMB.img1}" styleClass="input-register"/>
+                                                <p class="black-flag label-register ex-cols"> Image 4</p>
+                                                <h:inputFile value="#{imagesMB.img4}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Image 2</p>
+                                                <h:inputFile value="#{imagesMB.img2}" styleClass="input-register"/>
+                                                <p class="black-flag label-register ex-cols"> Image 5</p>
+                                                <h:inputFile value="#{imagesMB.img5}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Image 3</p>
+                                                <h:inputFile value="#{imagesMB.img3}" styleClass="input-register"/>
+                                                <p class="black-flag label-register ex-cols"> Image 6</p>
+                                                <h:inputFile value="#{imagesMB.img6}" styleClass="input-register"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6">
+                                                <div class="text-center">
+                                                    <h:commandLink action="#{imagesMB.createImage()}" styleClass="c-btn c-btn-submit">
+                                                        Create
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

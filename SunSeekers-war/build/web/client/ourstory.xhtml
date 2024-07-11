@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="element-video">
+                    <div id="content">
+                        <h:graphicImage styleClass="img-header img-expage" value="/resources/images/ourstory/local.jpg"/>
+                        <div class="video-overlay images-experiences"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="d-inline-block">
+                            <div class="content-in-video">
+                                <p>#{msg.ourstory}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="intro-ourstory">
+                    <div class="spacer-extra-small"></div>
+                    <div class="spacer-extra-small"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" class="content-intro-expage">#{msg.intro_ourstory}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spacer-extra-small"></div>
+                </div>
+                <div id="our-hotel">
+                    <div class="section">
+                        <div class="columns flex-stretch w-row">
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="heading-container full-wide side-padding">
+                                    <div class="space-lager"></div>
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-hotel"></div>
+                                        <div class="detail-hotel">#{msg.thehotel}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-medium heading-hotel">#{msg.thehotel_title}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="content-hotel">
+                                        #{msg.thehotel_content_be}<br/><br/>
+                                        #{msg.thehotel_content_af}
+                                    </p>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="basic-image-outer">
+                                    <div class="paralax-wrapper">
+                                        <div class="basic-image the-hotel"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-medium"></div>
+                </div>
+                <div id="people">
+                    <div class="section">
+                        <div class="columns flex-stretch w-row">
+                            <div class="column w-col w-col-6">
+                                <div class="basic-image-outer">
+                                    <div class="paralax-wrapper">
+                                        <div class="basic-image the-hotel the-people"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="secer">
+                                    <div class="heading-container full-wide side-padding">
+                                        <div class="space-lager"></div>
+                                        <div class="signposting slide-in">
+                                            <div class="signposting-rule-people"></div>
+                                            <div class="detail-people">#{msg.thepeople}</div>
+                                        </div>
+                                        <div class="spacer-extra-small"></div>
+                                        <h2 class="heading-medium heading-people">#{msg.thepeople_content1}<br/>#{msg.thepeople_content2} <br/>#{msg.thepeople_content3}</h2>
+                                        <div class="spacer-extra-small"></div>
+                                        <p class="content-people">#{msg.thepeople_des1} <br/>#{msg.thepeople_des2} <br/><br/>#{msg.thepeople_des3}</p>
+                                        <div class="spacer-extra-small"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-medium"></div>
+                </div>
+                <div id="endeavor">
+                    <div class="section">
+                        <div class="columns flex-stretch w-row">
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="heading-container full-wide side-padding">
+                                    <div class="space-lager"></div>
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-endeavor"></div>
+                                        <div class="detail-endeavor">#{msg.theendeavor}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-medium heading-endeavor">#{msg.theendeavor_heading}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="content-endeavor">#{msg.theendeavor_content}</p>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="basic-image-outer">
+                                    <div class="paralax-wrapper">
+                                        <div class="basic-image the-hotel the-endeavor"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-medium"></div>
+                </div>
+                <h:outputScript library="js" name="ourstory.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

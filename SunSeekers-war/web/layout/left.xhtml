@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <h:outputStylesheet library="css" name="admin.css"/>
+    </h:head>
+    <h:body>
+        <nav class="sidebar close">
+            <header>
+                <div>
+                    <span class="image">
+                        <h:form>
+                            <h:commandLink action="#{adminInfoMB.showAdmin()}"><h:graphicImage styleClass="imgs-left" value="#{adminMB.showInfo().adminPath}#{adminMB.showInfo().adminPhoto}" id="imager"/></h:commandLink>
+                        </h:form>
+                        <div class="text header-text">
+                            <span class="name">#{adminMB.showInfo().adminName}</span>
+                        </div>
+
+                    </span>
+                </div>
+                <i class="fas fa-chevron-right toggle"></i>
+            </header>
+            <ul class="sidebar-links">
+                <h5>
+                    <span>Overview</span>
+                    <div class="menu-separator"></div>
+                </h5>
+                <li>
+                    <h:link outcome="/admin/dashboard">
+                        <span class="material-symbols-outlined">
+                            dashboard
+                        </span>Dashboard
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/analytic">
+                        <span class="material-symbols-outlined">
+                            monitoring
+                        </span>Analytic
+                    </h:link>
+                </li>
+                <h5>
+                    <span>Sale</span>
+                    <div class="menu-separator"></div>
+                </h5>
+                <li>
+                    <h:link outcome="/admin/orders">
+                        <span class="material-symbols-outlined">
+                            orders
+                        </span>Orders
+                    </h:link>
+                </li>
+                <h5>
+                    <span>Main Menu</span>
+                    <div class="menu-separator"></div>
+                </h5>
+                <li>
+                    <h:link outcome="/admin/product">
+                        <span class="material-symbols-outlined">
+                            confirmation_number
+                        </span>Product
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/image">
+                        <span class="material-symbols-outlined">
+                            camera
+                        </span>Image
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/admins">
+                        <span class="material-symbols-outlined">
+                            manage_accounts
+                        </span>Admin
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/users">
+                        <span class="material-symbols-outlined">
+                            groups
+                        </span>User
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/plane">
+                        <span class="material-symbols-outlined">
+                            flight
+                        </span>Plane
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/schedule">
+                        <span class="material-symbols-outlined">
+                            work_history
+                        </span>Schedule
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/warehouse">
+                        <span class="material-symbols-outlined">
+                            warehouse
+                        </span>Warehouse
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/region">
+                        <span class="material-symbols-outlined">
+                            flag
+                        </span>Region
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/outstanding">
+                        <span class="material-symbols-outlined">
+                            location_on
+                        </span>Location
+                    </h:link>
+                </li>
+                <li>
+                    <h:link outcome="/admin/continent">
+                        <span class="material-symbols-outlined">
+                            language
+                        </span>Continent
+                    </h:link>
+                </li>
+            </ul>
+            <div class="user-account">
+                <div class="user-profile">
+                    <ul class="sidebar-links">
+                        <li>
+                            <h:form>
+                                <h:commandLink action="#{adminInfoMB.logout()}">
+                                    <span class="material-symbols-outlined">
+                                        logout
+                                    </span>Logout
+                                </h:commandLink>
+                            </h:form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </h:body>
+</html>

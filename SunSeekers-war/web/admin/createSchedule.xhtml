@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Create New Schedule</p>
+                            <h:form enctype="multipart/form-data">
+                                <div class="jdopawJwe-container">
+                                    <div class="jdopawJwe-box">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Information Tour</h6>
+                                                <p class="black-flag label-register"> Tour Name</p>
+                                                <h:selectOneMenu value="#{scheduleMB.tourId}" styleClass="input-register">
+                                                    <f:selectItems value="#{scheduleMB.findAllTour()}" var="tour" itemValue="#{tour.tourId}" itemLabel="#{tour.tourName}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Information Schedule</h6>
+                                                <p class="black-flag label-register"> Choose Date</p>
+                                                <h:selectOneMenu value="#{scheduleMB.sc.SDate}" styleClass="input-register">
+                                                    <f:selectItem itemValue="Day 1" itemLabel="Day 1"/>
+                                                    <f:selectItem itemValue="Day 2" itemLabel="Day 2"/>
+                                                    <f:selectItem itemValue="Day 3" itemLabel="Day 3"/>
+                                                    <f:selectItem itemValue="Day 4" itemLabel="Day 4"/>
+                                                    <f:selectItem itemValue="Day 5" itemLabel="Day 5"/>
+                                                    <f:selectItem itemValue="Day 6" itemLabel="Day 6"/>
+                                                    <f:selectItem itemValue="Day 7" itemLabel="Day 7"/>
+                                                    <f:selectItem itemValue="Day 8" itemLabel="Day 8"/>
+                                                    <f:selectItem itemValue="Day 9" itemLabel="Day 9"/>
+                                                    <f:selectItem itemValue="Day 10" itemLabel="Day 10"/>
+                                                    <f:selectItem itemValue="Day 11" itemLabel="Day 11"/>
+                                                    <f:selectItem itemValue="Day 12" itemLabel="Day 12"/>
+                                                    <f:selectItem itemValue="Day 13" itemLabel="Day 13"/>
+                                                    <f:selectItem itemValue="Day 14" itemLabel="Day 14"/>
+                                                    <f:selectItem itemValue="Day 15" itemLabel="Day 15"/>
+                                                    <f:selectItem itemValue="Day 16" itemLabel="Day 16"/>
+                                                    <f:selectItem itemValue="Day 17" itemLabel="Day 17"/>
+                                                    <f:selectItem itemValue="Day 18" itemLabel="Day 18"/>
+                                                    <f:selectItem itemValue="Day 19" itemLabel="Day 19"/>
+                                                    <f:selectItem itemValue="Day 20" itemLabel="Day 20"/>
+                                                    <f:selectItem itemValue="Day 21" itemLabel="Day 21"/>
+                                                    <f:selectItem itemValue="Day 22" itemLabel="Day 22"/>
+                                                    <f:selectItem itemValue="Day 23" itemLabel="Day 23"/>
+                                                    <f:selectItem itemValue="Day 24" itemLabel="Day 24"/>
+                                                    <f:selectItem itemValue="Day 25" itemLabel="Day 25"/>
+                                                    <f:selectItem itemValue="Day 26" itemLabel="Day 26"/>
+                                                    <f:selectItem itemValue="Day 27" itemLabel="Day 27"/>
+                                                    <f:selectItem itemValue="Day 28" itemLabel="Day 28"/>
+                                                    <f:selectItem itemValue="Day 29" itemLabel="Day 29"/>
+                                                    <f:selectItem itemValue="Day 30" itemLabel="Day 30"/>
+                                                </h:selectOneMenu>
+                                                <p class="black-flag label-register"> Time</p>
+                                                <h:inputText value="#{scheduleMB.sc.STime}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Name</p>
+                                                <h:inputText value="#{scheduleMB.sc.SName}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Address</p>
+                                                <h:inputText value="#{scheduleMB.sc.SAddress}" styleClass="input-register"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> Morning</p>
+                                                <h:inputTextarea value="#{scheduleMB.sc.SMorning}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> Afternoon</p>
+                                                <h:inputTextarea value="#{scheduleMB.sc.SAfternoon}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> Evening</p>
+                                                <h:inputTextarea value="#{scheduleMB.sc.SEverning}" styleClass="input-register"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> Images Morning</p>
+                                                <h:inputFile value="#{scheduleMB.fileMorning}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> Images Afternoon</p>
+                                                <h:inputFile value="#{scheduleMB.fileAfternoon}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register"> Images Evening</p>
+                                                <h:inputFile value="#{scheduleMB.fileEvening}" styleClass="input-register"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6">
+                                                <div class="text-center">
+                                                    <h:commandLink action="#{scheduleMB.createSchedule()}" styleClass="c-btn c-btn-submit">
+                                                        <f:param name="tourId" value="#{scheduleMB.sc.tourId.tourId}"/>
+                                                        Create
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

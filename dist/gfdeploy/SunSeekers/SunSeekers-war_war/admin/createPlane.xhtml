@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Create New Plane</p>
+                            <h:form>
+                                <div class="jdopawJwe-container">
+                                    <div class="jdopawJwe-box">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Information Depart</h6>
+                                                <p class="black-flag label-register"> Date</p>
+                                                <h:inputText value="#{planeMB.planner.planeDate}" styleClass="input-register">
+                                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                </h:inputText>
+                                                <p class="black-flag label-register"> Time</p>
+                                                <h:inputText value="#{planeMB.planner.planeTimeDepart}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Places</p>
+                                                <h:inputText value="#{planeMB.planner.planeDepart}" styleClass="input-register"/>
+                                                <p class="black-flag label-register"> Air port</p>
+                                                <h:inputText value="#{planeMB.planner.airNameDepart}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Code air port</p>
+                                                <h:inputText value="#{planeMB.planner.airCodeDepart}" styleClass="input-register"/>
+                                            </div>
+                                            <!--                                        <div class="vehical-line"></div>-->
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Information Arrive </h6>
+                                                <p class="black-flag label-register"> Date</p>
+                                                <h:inputText value="#{planeMB.planner.planeDateArrive}" styleClass="input-register">
+                                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                </h:inputText>
+                                                <p class="black-flag label-register"> Time</p>
+                                                <h:inputText value="#{planeMB.planner.planeTimeArrive}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Places</p>
+                                                <h:inputText value="#{planeMB.planner.planeArrive}" styleClass="input-register"/>
+                                                <p class="black-flag label-register"> Air port</p>
+                                                <h:inputText value="#{planeMB.planner.airNameArrive}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Code air port</p>
+                                                <h:inputText value="#{planeMB.planner.airCodeArrive}" styleClass="input-register"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Other</h6>
+                                                <p class="black-flag label-register"> Air number</p>
+                                                <h:inputText value="#{planeMB.planner.airNumber}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Air company</p>
+                                                <h:inputText value="#{planeMB.planner.airlineCompany}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Planing</p>
+                                                <h:inputText value="#{planeMB.planner.planing}" styleClass="input-register"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6">
+                                                <div class="text-center">
+                                                    <h:commandLink action="#{planeMB.createNewPlane()}" styleClass="c-btn c-btn-submit">
+                                                        <f:ajax execute="@form"/>
+                                                        Create
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="checkout">
+                    <div class="checkout-box">
+                        <div class="header-checkout flex-searched">
+                            <div class="total-checkout">
+                                <div class="step-container">
+                                    <div class="step active enabled" id="traveler-step">
+                                        <div class="step-number">1</div>
+                                        <div class="step-label">#{msg.checkTravel}</div>
+                                    </div>
+                                    <div class="step disabled" id="payment-step">
+                                        <div class="step-number">2</div>
+                                        <div class="step-label">#{msg.checkPayment}</div>
+                                    </div>
+<!--                                    <div class="step disabled" id="review-step">
+                                        <div class="step-number">3</div>
+                                        <div class="step-label">Review Order</div>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h:form>
+                        <div id="checkout-content">
+                            <div class="co-box-2">
+                                <div class="flex-searched mx-4">
+                                    <div id="traveler-detail" class="input-checkout active">
+                                        <p class="checkout-co2-title pt-3">#{msg.checkSecure}</p>
+                                        <div class="secure-checkout">#{msg.checkSecure_title}</div>
+                                        <p class="checkout-co2-title pt-3">#{msg.checkContact}</p>
+                                        <div class="flex-searched">
+                                            <div class="w-col-6">
+                                                <p>#{msg.checkEmail}</p>
+                                                <h:outputText styleClass="form-control" value="#{loginMB.userReg.userEmail}"/>
+                                            </div>
+                                            <div class="w-col-6">
+                                                <p>#{msg.checkPhone}</p>
+                                                <h:outputText styleClass="form-control" value="#{loginMB.userReg.userPhone}"/>
+                                            </div>
+                                        </div>
+                                        <p class="checkout-co2-title pt-3">#{msg.checkTravel}</p>
+                                        <div class="flex-searched mb-3">
+                                            <div class="w-col-6">
+                                                <p>#{msg.checkFirst}</p>
+                                                <h:outputText styleClass="form-control" value="#{loginMB.userReg.userFName}"/>
+                                            </div>
+                                            <div class="w-col-6">
+                                                <p>#{msg.checkLast}</p>
+                                                <h:outputText styleClass="form-control" value="#{loginMB.userReg.userLName}"/>
+                                            </div>
+                                        </div>
+                                        <p class="co-address">#{msg.checkPP}</p>
+                                        <h:outputText styleClass="form-control mb-3 input-passport" value="#{loginMB.userReg.passPort}"/>
+                                        <p class="co-address">#{msg.checkAdd}</p>
+                                        <h:outputText styleClass="form-control address-input" value="#{loginMB.userReg.userAddress}, #{loginMB.userReg.userCity}"/>
+                                        <h:commandLink onclick="scrollToTop()" styleClass="text-decoration-none btn btn-success mt-4 mb-3 btn-co-next">
+                                            #{msg.next}
+                                            <f:ajax event="click" onevent="goToNextStep" execute="@form" render="input-checkout, payment-detail"/>
+                                        </h:commandLink>
+                                    </div>
+                                    <div id="payment-detail" class="input-checkout">
+                                        <p class="checkout-co2-title pt-3">#{msg.checkPayment}</p>
+                                        <div class="secure-checkout pt-3">#{msg.checkPaymentInfo}</div>
+                                        <p class="co-address mt-3">#{msg.checkCredit}</p>
+                                        <h:inputText styleClass="form-control" value="#{checkoutMB.numberCard}"/>
+                                        <p class="co-address mt-3">#{msg.checkDate}</p>
+                                        <h:inputText styleClass="form-control" value="#{checkoutMB.inputDate}"/>
+                                        <p class="co-address mt-3">#{msg.checkOwner}</p>
+                                        <h:inputText styleClass="form-control address-input mb-3" value="#{checkoutMB.numberName}"/>
+                                        <p class="co-address">CVV</p>
+                                        <h:inputSecret styleClass="form-control address-input" value="#{checkoutMB.cvv}"/>
+                                        <div class="flex-searched">
+                                            <h:commandLink onclick="scrollToTop()" styleClass="text-decoration-none btn btn-secondary mt-4 mb-3 btn-co-2 ml-1">
+                                                #{msg.back}
+                                            </h:commandLink>
+                                            <h:commandLink action="#{checkoutMB.checkOut()}" onclick="scrollToTop()" styleClass="text-decoration-none btn btn-success mt-4 mb-3 btn-co-2 mr-1">
+                                                #{msg.order}
+                                                <f:param name="userid" value="#{loginMB.userReg.userId}"/>
+                                            </h:commandLink>
+                                        </div>
+                                    </div>
+<!--                                    <div id="review-order" class="input-checkout">
+                                        <p class="checkout-co2-title pt-3">Review Order</p>
+                                        <div class="secure-checkout mb-3">Review your order before finalizing</div>
+                                        <div class="flex-searched">
+                                            <div class="w-col-3">
+                                                <p><b>Name:</b></p>
+                                                <p><b>Email:</b></p>
+                                                <p><b>Phone:</b></p>
+                                                <p><b>Passport:</b></p>
+                                                <p><b>Address:</b></p>
+                                                <p><b>Payment:</b></p>
+                                            </div>
+                                            <div class="w-col-3">
+                                                <p>#{loginMB.userReg.userFName} #{loginMB.userReg.userLName}</p>
+                                                <p>#{loginMB.userReg.userEmail}</p>
+                                                <p>#{loginMB.userReg.userPhone}</p>
+                                                <p>#{loginMB.userReg.passPort}</p>
+                                                <p>#{loginMB.userReg.userAddress}, #{loginMB.userReg.userCity}</p>
+                                                <p>Visa</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex-searched">
+                                            <h:commandLink onclick="scrollToTop()" styleClass="text-decoration-none btn btn-secondary mt-4 mb-3 btn-co-2 ml-1">
+                                                Back
+                                                <f:ajax event="click" onevent="goToPreviousStep" execute="@form" render="review-order, payment-detail, review-step"/>
+                                            </h:commandLink>
+                                            <h:commandLink action="#{checkoutMB.checkOut()}" onclick="scrollToTop()" styleClass="text-decoration-none btn btn-success mt-4 mb-3 btn-co-2 mr-1">
+                                                Confirm
+                                                <f:param name="userid" value="#{loginMB.userReg.userId}"/>
+                                                <f:ajax execute="@form" render="@form"/>
+                                            </h:commandLink>
+                                        </div>
+                                    </div>-->
+                                    <div class="review-checkout">
+                                        <div class="review-order-detail box-sd">
+                                            <div class="review-ptl">
+                                                <p class="review-od">#{msg.checkReview}</p>
+                                                <ui:repeat value="#{cartMB.showAllByUserId()}" var="cart">
+                                                    <div class="review-od-box mb-2">
+                                                        <div class="flex-searched">
+                                                            <h:graphicImage value="#{cart.tourId.imageId.imgPath}#{cart.tourId.imageId.img1}" styleClass="review-imgod"/>
+                                                            <div class="mx-2 jfiajfias">
+                                                                <p class="checkout-name"><b>#{cart.tourId.tourName} - #{cart.tourId.totalDate}D#{cart.tourId.totalDate - 1}N</b></p>
+                                                                <p class="quan-checkout">#{msg.review_quan}: #{cart.quantity}</p>
+                                                                <p class="price-checkout mt-2">$#{cart.tourId.tourPrice}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="vehical-line mb-3"></div>
+                                                </ui:repeat>
+                                                <div class="flex-searched space-beetween">
+                                                    <div>
+                                                        <p><b>#{msg.checkQuantity}</b></p>
+                                                        <p><b>#{msg.cart_total}</b></p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-right">#{cartMB.sumQuantity()}</p>
+                                                        <p>$#{cartMB.sumPrice()}0</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+                <h:outputScript library="js" name="checkout.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

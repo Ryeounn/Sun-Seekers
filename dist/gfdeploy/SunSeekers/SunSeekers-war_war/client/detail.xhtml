@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="detail">
+                    <div id="element-video" class="element-fix-detail">
+                        <div id="content">
+                            <h:graphicImage styleClass="img-header img-expage" value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img1}"/>
+                            <div class="video-overlay images-experiences"></div>
+                        </div>
+                        <div class="text-center">
+                            <div class="d-inline-block">
+                                <div class="content-in-video">
+                                    <p>#{detailMB.findTourbyId().tourId.tourName}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="detail-content">
+                        <div class="spacer-extra-small"></div>
+                        <div class="box-detail">
+                            <div class="flex-searched">
+                                <div class="swiper-left">
+                                    <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
+                                                      thumbs-swiper=".mySwiper2" loop="true" space-between="10" navigation="true">
+                                        <swiper-slide>
+                                            <h:graphicImage value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img1}" class="swiper1-img" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img2}" class="swiper1-img" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img3}" class="swiper1-img" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img4}" class="swiper1-img" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img5}" class="swiper1-img" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img6}" class="swiper1-img" />
+                                        </swiper-slide>
+                                    </swiper-container>
+                                    <swiper-container class="mySwiper2" loop="true" space-between="10" slides-per-view="4" free-mode="true"
+                                                      watch-slides-progress="true">
+                                        <swiper-slide>
+                                            <h:graphicImage styleClass="gp-2" value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img1}"/>
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage styleClass="gp-2" value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img2}" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage styleClass="gp-2" value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img3}" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage styleClass="gp-2" value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img4}" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage styleClass="gp-2" value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img5}" />
+                                        </swiper-slide>
+                                        <swiper-slide>
+                                            <h:graphicImage styleClass="gp-2" value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img6}" />
+                                        </swiper-slide>
+                                    </swiper-container>
+                                </div>
+                                <div class="detail-right">
+                                    <h5 class="detail-tourname">#{detailMB.findTourbyId().tourId.tourName}</h5>
+                                    <i class="detail-totaldate">#{detailMB.findTourbyId().tourId.totalDate} #{msg.days} #{detailMB.findTourbyId().tourId.totalDate - 1} #{msg.nights}</i>
+                                    <div class="spacer-extra-small"></div>
+                                    <div class="flex-searched">
+                                        <div class="icon-title-detail">
+                                            <p><i class="fas fa-qrcode"></i></p>
+                                            <p><i class="fas fa-calendar-alt"></i></p>
+                                            <p><i class="fas fa-clock"></i></p>
+                                            <p><i class="fas fa-plane-departure"></i></p>
+                                            <p><i class="fas fa-plane-arrival"></i></p>
+                                            <p><i class="fas fa-fighter-jet"></i></p>
+                                            <p><i class="fas fa-tag"></i></p>
+                                        </div>
+                                        <div class="name-title-detail">
+                                            <p>#{msg.tourCode}</p>
+                                            <p>#{msg.tourDe}</p>
+                                            <p>#{msg.tourTime}</p>
+                                            <p>#{msg.tourDepart}</p>
+                                            <p>#{msg.tourArrival}</p>
+                                            <p>#{msg.tourVehicle}</p>
+                                            <p>#{msg.tourPrice}</p>
+                                        </div>
+                                        <div class="dtb-detail">
+                                            <p>#{detailMB.findTourbyId().tourId.tourCode}</p>
+                                            <p>
+                                                <h:outputText value="#{detailMB.findTourbyId().planeId1.planeDate}">
+                                                    <f:convertDateTime pattern="dd/MM/YYYY"/>
+                                                </h:outputText>
+                                            </p>
+                                            <p>#{detailMB.findTourbyId().tourId.totalDate}</p>
+                                            <p>#{detailMB.findTourbyId().planeId1.planeDepart}</p>
+                                            <p>#{detailMB.findTourbyId().planeId1.planeArrive}</p>
+                                            <p><h:graphicImage styleClass="detail-logoed" value="#{detailMB.findTourbyId().planeId1.companyPath}"/> #{detailMB.findTourbyId().planeId1.airlineCompany}</p>
+                                            <p>$#{detailMB.findTourbyId().tourId.tourPrice}</p>
+                                        </div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h:form id="cartForm">
+                                        <div class="flex-searched space-beetween">
+                                            <h:commandLink action="#{cartMB.addCart()}" styleClass="btn btn-primary linkto-detail">
+                                                <f:param name="tourId" value="#{detailMB.findTourbyId().tourId.tourId}"/>
+                                                <f:param name="userId" value="#{loginMB.userReg.userId}"/>
+                                                <f:ajax execute="@this" render="successModalContainer" onevent="handleAjaxComplete"/>
+                                                <i class="fas fa-shopping-cart"></i> #{msg.tourAddcart}
+                                            </h:commandLink>
+                                            <h:commandLink action="#{wishListMb.findWish()}" styleClass="btn btn-warning linkto-detail btn-wlist-detail">
+                                                <f:param name="tourId" value="#{detailMB.findTourbyId().tourId.tourId}"/>
+                                                <f:param name="userId" value="#{loginMB.userReg.userId}"/>
+                                                <i class="fas fa-heart"></i> #{msg.tourWishlist}
+                                            </h:commandLink>
+                                            <h:panelGroup id="addSuccessModalContainer">
+                                                <div id="addSuccessModalOverlay" onclick="closeAddModal()" class="add-modal-overlay"></div>
+                                                <div id="addSuccessModal" class="add-modal">
+                                                    <div class="add-modal-content">
+                                                        <div class="add-modal-header">
+                                                            <span class="add-close" onclick="closeAddModal()">&times;</span>
+                                                            <h2>#{msg.tourAddedCart}</h2>
+                                                        </div>
+                                                        <div class="add-modal-body">
+                                                            <p>#{msg.tourAdded_title}</p>
+                                                        </div>
+                                                        <div class="add-modal-footer">
+                                                            <h:graphicImage value="#{detailMB.findTourbyId().tourId.imageId.imgPath}#{detailMB.findTourbyId().tourId.imageId.img1}" styleClass="add-images"/>
+                                                            <div class="add-box-footer">
+                                                                <p class="mt-3"><b>#{detailMB.findTourbyId().tourId.tourName}</b></p>
+                                                                <span>#{detailMB.findTourbyId().tourId.totalDate} #{msg.days} #{detailMB.findTourbyId().tourId.totalDate - 1} #{msg.nights}</span>
+                                                                <p class="mt-3 mb-3 add-price">$#{detailMB.findTourbyId().tourId.tourPrice}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <div class="flex-searched">
+                                                                <h:link outcome="/client/cart" styleClass="btn-addto-cart text-decoration-none">#{msg.gotoCart}</h:link>
+                                                                <a class="btn-continue text-decoration-none" onclick="closeAddModal()">#{msg.conShop}</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </h:panelGroup>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                            <div id="plane">
+                                <div class="spacer-extra-extra-extra-small"></div>
+                                <div class="title-schedule mb-3">#{msg.tourPlane}</div>
+                                <div class="box-plane">
+                                    <div class="flex-searched">
+                                        <p class="mt-4"><b>#{msg.depart}</b></p>
+                                        <div class="during-box">
+                                            <div class="flex-searched space-arround">
+                                                <p>#{detailMB.tourDetail.planeId1.planeTimeDepart}</p>
+                                                <p>#{detailMB.tourDetail.planeId1.planing}</p>
+                                                <p>#{detailMB.tourDetail.planeId1.planeTimeArrive}</p>
+                                            </div>
+                                            <p class="horizontal"></p>
+                                            <div class="flex-searched space-beetween">
+                                                <p>#{detailMB.tourDetail.planeId1.planeDepart}</p>
+                                                <p>#{detailMB.tourDetail.planeId1.planeArrive}</p>
+                                            </div>
+                                            <p></p>
+                                        </div>
+                                        <p class="mt-4 mx-4 line-h2"><b>#{msg.tourAirPort}</b></p>
+                                        <div class="during-box-air">
+                                            <div class="flex-searched space-beetween">
+                                                <p class="mt-4 line-h2"><i class="fas fa-plane-departure"></i> #{detailMB.tourDetail.planeId1.airNameDepart}</p>
+                                                <p class="mt-4 mx-3 line-h2"><i class="fas fa-long-arrow-alt-right"></i></p>
+                                                <p class="mt-4 line-h2"><i class="fas fa-plane-arrival"></i> #{detailMB.tourDetail.planeId1.airNameArrive}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="spacer-extra-small"></div>
+                                <div class="box-plane">
+                                    <div class="flex-searched">
+                                        <p class="mt-4"><b>#{msg.arrival}</b></p>
+                                        <div class="during-box box-arrival">
+                                            <div class="flex-searched space-arround">
+                                                <p>#{detailMB.tourDetail.planeId2.planeTimeDepart}</p>
+                                                <p>#{detailMB.tourDetail.planeId2.planing}</p>
+                                                <p>#{detailMB.tourDetail.planeId2.planeTimeArrive}</p>
+                                            </div>
+                                            <p class="horizontal"></p>
+                                            <div class="flex-searched space-beetween">
+                                                <p>#{detailMB.tourDetail.planeId2.planeDepart}</p>
+                                                <p>#{detailMB.tourDetail.planeId2.planeArrive}</p>
+                                            </div>
+                                            <p></p>
+                                        </div>
+                                        <p class="mt-4 air-mgl line-h2"><b>#{msg.tourAirPort}</b></p>
+                                        <div class="during-box-air">
+                                            <div class="flex-searched space-beetween">
+                                                <p class="mt-4 line-h2"><i class="fas fa-plane-departure"></i> #{detailMB.tourDetail.planeId2.airNameDepart}</p>
+                                                <p class="mt-4 mx-3 line-h2"><i class="fas fa-long-arrow-alt-right"></i></p>
+                                                <p class="mt-4 line-h2"><i class="fas fa-plane-arrival"></i> #{detailMB.tourDetail.planeId2.airNameArrive}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="schedule">
+                                <div class="spacer-extra-extra-extra-small"></div>
+                                <div class="title-schedule mb-3">#{msg.tourSchedule}</div>
+                                <ui:repeat value="#{detailMB.findSchedulebyId()}" var="schedule">
+                                    <div class="box-schedule">
+                                        <div class="schedule-divdate">
+                                            <div class="div-sdate">
+                                                #{schedule.SDate}
+                                            </div>
+                                            <div class="div-sname">
+                                                <p class="title-sname">#{schedule.SName}</p>
+                                            </div>
+                                        </div>
+                                        <div class="box-schedule-content">
+                                            <div class="schedule-content">
+                                                <p>#{schedule.SMorning}</p>
+                                                <p>#{schedule.SAfternoon}</p>
+                                                <p>#{schedule.SEverning}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+                            <div class="spacer-extra-small"></div>
+                            <div id="attraction">
+                                <div class="title-schedule mb-3">#{msg.tourAttraction}</div>
+                                <ui:repeat value="#{detailMB.findAttractionByTourId()}" var="att">
+                                    <p class="aname-title">- #{att.attractionId.AName}</p>
+                                    <div>#{att.attractionId.ADescription}</div>
+                                </ui:repeat>
+                            </div>
+                        </div>
+                        <div class="spacer-extra-small"></div>
+                        <div id="detail-recommend">
+                            <div class="box-recommend pb-5">
+                                <div class="spacer-extra-extra-extra-small"></div>
+                                <div class="title-schedule mb-3">#{msg.tourRecommend}</div>
+                                <swiper-container class="mySwiper3" loop="true" space-between="10" slides-per-view="4" free-mode="true"
+                                                  watch-slides-progress="true">
+                                    <ui:repeat value="#{detailMB.findRecommend()}" var="commend">
+                                        <swiper-slide>
+                                            <h:form>
+                                                <h:link styleClass="text-decoration-none color-text" outcome="/client/detail">
+                                                    <f:param name="tourId" value="#{commend.tourId.tourId}"/>
+                                                    <h:graphicImage styleClass="gp-2" value="#{commend.tourId.imageId.imgPath}#{commend.tourId.imageId.img1}"/>
+                                                    <div class="commend-body">
+                                                        <p class="commend-name">#{commend.tourId.tourName}</p>
+                                                        <p class="commend-date">#{commend.tourId.totalDate} #{msg.days} #{commend.tourId.totalDate - 1} #{msg.nights}</p>
+                                                        <p class="commend-price">$#{commend.tourId.tourPrice}</p>
+                                                        <p class="commend-region">#{commend.tourId.regionId.continentId.continentName}</p>
+                                                        <h:commandLink id="icon-ajax" action="#{wishListMb.findWish()}" styleClass="link-wishlist">
+                                                            <f:param name="tourId" value="#{commend.tourId.tourId}"/>
+                                                            <f:param name="userId" value="#{loginMB.userReg.userId}"/>
+                                                            <f:ajax execute="@this" render="icon-ajax"/>
+                                                            <h:panelGroup rendered="#{empty wishListMb.findById(commend.tourId.tourId, loginMB.userReg.userId)}" class="far fa-heart"></h:panelGroup>
+                                                            <h:panelGroup rendered="#{!empty wishListMb.findById(commend.tourId.tourId, loginMB.userReg.userId)}" class="fas fa-heart"></h:panelGroup>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </h:link>
+                                            </h:form>
+                                        </swiper-slide>
+                                    </ui:repeat>
+                                </swiper-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@6.8.4/swiper-bundle.min.js"></script>
+                <link href="https://cdn.jsdelivr.net/npm/swiper@11.0.7/swiper-bundle.min.css" rel="stylesheet"/>
+                <h:outputScript library="js" name="detail.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

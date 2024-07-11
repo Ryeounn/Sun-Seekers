@@ -1,0 +1,539 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="mainInfo">
+                    <div class="user-info">
+                        <div class="container-info pt-5 pb-5">
+                            <div class="flex-searched">
+                                <div class="container-first">
+                                    <div class="flex-searched">
+                                        <h:graphicImage styleClass="img-userinfo" value="#{userInfoMB.showProfile().userPath}#{userInfoMB.showProfile().userPhoto}"/>
+                                        <div class="con-subling-userinfo mt-3">
+                                            <p class="name-userinfo">#{userInfoMB.showProfile().userFName} #{userInfoMB.showProfile().userLName}</p>
+                                            <p class="email-userinfo">#{userInfoMB.showProfile().userEmail}</p>
+                                        </div>
+                                    </div>
+                                    <div class="nav-userinfo mt-5">
+                                        <p>
+                                            <a class="text-decoration-none actived" onclick="showSection('user-info')">
+                                                <i class="fas fa-user"></i>
+                                                <span>User Information</span>
+                                            </a>
+                                        </p>
+                                        <p class="pt-3">
+                                            <a class="text-decoration-none" onclick="showSection('sign-in')">
+                                                <i class="fas fa-lock"></i>
+                                                <span>Sign-in and Security Settings</span>
+                                            </a>
+                                        </p>
+                                        <p class="pt-3">
+                                            <a class="text-decoration-none" onclick="showSection('fund-payment')">
+                                                <i class="fas fa-money-check"></i>
+                                                <span>Funds and Payment Methods</span>
+                                            </a>
+                                        </p>
+                                        <p class="pt-3">
+                                            <a class="text-decoration-none" onclick="showSection('purchase-history')">
+                                                <i class="fas fa-history"></i>
+                                                <span>Purchase History</span>
+                                            </a>
+                                        </p>
+                                        <p class="pt-3 pb-5">
+                                            <a class="text-decoration-none" onclick="showSection('privacy-other')">
+                                                <i class="fas fa-hand-paper"></i>
+                                                <span>Privacy and Other Settings</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="container-second">
+                                    <div id="user-info" class="info-box">
+                                        <h1>User Information</h1>
+                                        <p class="p-review">Review and update this account’s information.</p>
+                                        <div class="user-setting">
+                                            <div class="userInfo-profileSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Profile</span>
+                                                    <a class="user-settingTitle-action text-decoration-none" onclick="showSection('editInfo')">Edit</a>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <ul class="user-settingDetails-list">
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">Nickname</p>
+                                                            <p class="user-settingDetails-text">#{userInfoMB.showProfile().userFName} #{userInfoMB.showProfile().userLName}</p>
+                                                        </li>
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">Date of Birth</p>
+                                                            <p class="user-settingDetails-text">
+                                                                <h:outputText value="#{userInfoMB.showProfile().userDob}">
+                                                                    <f:convertDateTime pattern="d/M/yyyy"/>
+                                                                </h:outputText>
+                                                            </p>
+                                                        </li>
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">Number Phone</p>
+                                                            <p class="user-settingDetails-text">#{userInfoMB.showProfile().userPhone}</p>
+                                                        </li>
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">Passport</p>
+                                                            <p class="user-settingDetails-text text-passport">********</p>
+                                                        </li>
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">Country/region of residence</p>
+                                                            <p class="user-settingDetails-text">#{userInfoMB.showProfile().userCity}</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="userInfo-servicesSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Linked apps and services</span>
+                                                    <a class="user-settingTitle-action text-decoration-none" onclick="showSection('linked-apps')">Edit</a>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="sign-in" class="info-box" style="display: none;">
+                                        <h1>Sign-in and Security Settings</h1>
+                                        <p class="p-review">View and manage your account sign-in methods.</p>
+                                        <div class="user-setting">
+                                            <div class="userInfo-profileSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>E-mail address</span>
+                                                    <a class="user-settingTitle-action text-decoration-none" onclick="showSection('change-email')">Edit</a>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <ul class="user-settingDetails-list">
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">E-mail address</p>
+                                                            <p class="user-settingDetails-text">#{userInfoMB.showProfile().userEmail}</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="userInfo-servicesSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Sign-in ID</span>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <ul class="user-settingDetails-list">
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">Sign-in ID</p>
+                                                            <p class="user-settingDetails-text">Not support</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="userInfo-servicesSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Password</span>
+                                                    <a class="user-settingTitle-action text-decoration-none" onclick="showSection('change-password')">Edit</a>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <ul class="user-settingDetails-list">
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">Password</p>
+                                                            <p class="user-settingDetails-text text-dots"><i class="fas fa-circle"></i> <i class="fas fa-circle"></i> <i class="fas fa-circle"></i> <i class="fas fa-circle"></i></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="userInfo-profileSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Sign-in method</span>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <ul class="user-settingDetails-list">
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-label">Sign-in method</p>
+                                                            <p class="user-settingDetails-text">E-mail address</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="fund-payment" class="info-box" style="display: none;">
+                                        <h1>Funds and Payment Methods</h1>
+                                        <p class="p-review">View and manage your funds and payment methods.</p>
+                                        <div class="user-setting">
+                                            <div class="userInfo-profileSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Card</span>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <div class="user-visacard">
+                                                        <div class="flex-searched space-beetween">
+                                                            <div></div>
+                                                            <div class="user-cardinfo-header">
+                                                                <i class="fas fa-wifi"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="user-card-marginl">
+                                                            <p class="user-cardinfo-nav">
+                                                                <i class="fas fa-caret-left"></i><i class="fas fa-microchip"></i>
+                                                            </p>
+                                                            <p class="user-cardinfo-number">**** **** **** ****</p>
+                                                            <div class="flex-searched space-center">
+                                                                <p class="user-titleValid">VALID<br/>THRU</p>
+                                                                <p class="user-dateValid">MM / YY</p>
+                                                            </div>
+                                                            <div class="flex-searched space-beetween user-cardinfo-footer">
+                                                                <p>Cardholder Name</p>
+                                                                <h:graphicImage styleClass="" value="/resources/images/apps/visaremovebg.png"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="userInfo-servicesSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Visa</span>
+                                                    <h:link styleClass="user-settingTitle-action text-decoration-none">Edit</h:link>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="purchase-history" class="info-box" style="display: none;">
+                                        <h1>Purchase History</h1>
+                                        <p class="p-review">View a record of your transactions and pre-orders.</p>
+                                        <h:form>
+                                            <div class="user-setting">
+                                                <ui:repeat value="#{userInfoMB.findByUser()}" var="ord">
+                                                    <div class="userInfo-profileSettingItem">
+                                                        <h2 class="user-settingTitle">
+                                                            <span>Status: #{ord.orderStatus}</span>
+                                                            <p class="">Order Date:
+                                                                <i>
+                                                                    <h:outputText value="#{ord.ordersDate}">
+                                                                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                                                    </h:outputText>
+                                                                </i>
+                                                            </p>
+                                                        </h2>
+                                                        <div class="user-settingDetails">
+                                                            <ul class="user-settingDetails-list list-pc">
+                                                                <li class="user-settingDetails-pc">
+                                                                    <div class="box-pc">
+                                                                        <ui:repeat value="#{userInfoMB.findOrderdetailbyOrder(ord.ordersId)}" var="orderdetails">
+                                                                            <div class="detail-box-pc">
+                                                                                <h:graphicImage styleClass="user-settingDetails-img" value="#{orderdetails.tourId.imageId.imgPath}#{orderdetails.tourId.imageId.img1}"/>
+                                                                                <div class="detail-pc">
+                                                                                    <p>#{orderdetails.tourId.tourName}</p>
+                                                                                    <p class="ordtN">#{orderdetails.tourId.totalDate} Days #{orderdetails.tourId.totalDate - 1} Nights</p>
+                                                                                    <div>Quantity: #{orderdetails.quantity}</div>
+                                                                                </div>
+                                                                                <div class="detail-price-pc">Price: <b>$#{orderdetails.price}</b></div>
+                                                                            </div>
+                                                                        </ui:repeat>
+                                                                        <div class="detail-totl">
+                                                                            <hr/>
+                                                                        <p>Total Quantity: #{ord.totalQuantity}</p>
+                                                                        <p>Total Price: <b class="detail-total-price">$#{ord.totalPrice}</b></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </ui:repeat>
+                                            </div>
+                                            <h:commandLink action="#{userInfoMB.previousPage()}" disabled="#{userInfoMB.currentPage == 1}">
+                                                <f:ajax render="@form"/>
+                                                <h:outputText value="&#xf053;" styleClass="fa-solid" escape="false"/>
+                                            </h:commandLink> 
+                                            <h:outputText value="Page #{userInfoMB.currentPage} of #{userInfoMB.totalPages}" class="textpage"/> 
+                                            <h:commandLink action="#{userInfoMB.nextPage()}" disabled="#{userInfoMB.currentPage == userInfoMB.totalPages}">
+                                                <f:ajax render="@form"/>
+                                                <h:outputText value="&#xf054;" styleClass="fa-solid" escape="false"/>
+                                            </h:commandLink>
+                                        </h:form>
+                                    </div>
+                                    <div id="privacy-other" class="info-box" style="display: none;">
+                                        <h1>Privacy and Other Settings</h1>
+                                        <p class="p-review">Manage your email settings, data usage and more.</p>
+                                        <div class="user-setting">
+                                            <div class="userInfo-profileSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>E-mail from Nintendo</span>
+                                                    <a class="user-settingTitle-action text-decoration-none" onclick="showSection('promotional-email')">Change</a>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <ul class="user-settingDetails-list">
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-privacy">Receive promotional e-mails about games, events, special offers, and more?</p>
+                                                            <p id="yes-reci" class="user-settingDetails-yes">Yes</p>
+                                                            <p class="user-settingDetails-privacy mt-3">Receive surveys from Nintendo?</p>
+                                                            <p id="yes-reci2" class="user-settingDetails-yes pt-3">Yes</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="userInfo-servicesSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Services Using Account Information</span>
+                                                    <h:link styleClass="user-settingTitle-action text-decoration-none">Confirm</h:link>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <div class="userInfo-secondaryAction">
+                                            <h:link styleClass="userInfo-secondaryAction-btn text-decoration-none">Delete account</h:link>
+                                        </div>
+                                    </div>
+                                    <div id="editInfo" class="info-box" style="display: none;">
+                                        <h:form enctype="multipart/form-data">
+                                            <h1>Edit Info</h1>
+                                            <div class="user-setting">
+                                                <div class="user-setting-body">
+                                                    <div class="user-profileEdit-column">
+                                                        <div class="user-profileEdit-columnItem user-profileEdit-columnItem-thumb">
+                                                            <div class="user-avatorIcon">
+                                                                <h:graphicImage value="#{userInfoMB.showProfile().userPath}#{userInfoMB.showProfile().userPhoto}"/>
+                                                            </div>
+                                                            <h:link styleClass="user-profileEdit-avt flex-searched text-decoration-none">
+                                                                <h:inputFile value="#{userInfoMB.img}"/>
+                                                            </h:link>
+                                                        </div>
+                                                        <div class="user-profileEdit-columnItem">
+                                                            <div class="flex-searched">
+                                                                <div>
+                                                                    <label class="">First Name</label>
+                                                                    <h:inputText required="true" styleClass="user-profileEdit-form" value="#{userInfoMB.userFName}"/>
+                                                                </div>
+                                                                <div class="mx-3">
+                                                                    <label class="">Last Name</label>
+                                                                    <h:inputText required="true" styleClass="user-profileEdit-form" value="#{userInfoMB.userLName}"/>
+                                                                </div>
+                                                            </div>
+                                                            <p class="user-profile-formnote">Note: This will be used in communications from Sun Seekers. It will not be shown to others without prior notice.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="user-profileEdit-item-birthdate">
+                                                        <label class="user-settingForm-label">Date of birth</label>
+                                                        <p class="user-profile-fixedValue"><h:outputText value="#{userInfoMB.showProfile().userDob}">
+                                                                <f:convertDateTime pattern="dd/MM/YYYY"/>
+                                                            </h:outputText></p>
+                                                    </div>
+                                                    <div class="user-profileEdit-item">
+                                                        <label class="user-settingForm-label">Number Phone</label>
+                                                        <h:inputText required="true" styleClass="user-profileEdit-form" value="#{userInfoMB.userPhone}"/>
+                                                    </div>
+                                                    <div class="user-profileEdit-item">
+                                                        <label class="user-settingForm-label">Pass Port</label>
+                                                        <h:inputText required="true" styleClass="user-profileEdit-form" value="#{userInfoMB.passPort}"/>
+                                                    </div>
+                                                    <div class="user-profileEdit-item">
+                                                        <label class="user-settingForm-label">Country/region of residence</label>
+                                                        <h:inputText required="true" styleClass="user-profileEdit-form" value="#{userInfoMB.userCity}"/>
+                                                    </div>
+                                                    <div class="user-profileEdit-item">
+                                                        <label class="user-settingForm-label">Address</label>
+                                                        <h:inputText required="true" styleClass="user-profileEdit-form" value="#{userInfoMB.userAddress}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="user-formGroup user-formGroup-submit">
+                                                <h:commandLink action="#{userInfoMB.saveProfile()}" styleClass="c-btn c-btn-primary c-btn-medium text-decoration-none">
+                                                    Save Changes
+                                                </h:commandLink>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                    <div id="linked-apps" class="info-box" style="display: none;">
+                                        <h1>Linked Apps and Services</h1>
+                                        <div class="user-setting">
+                                            <div class="userInfo-profileSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Linked accounts</span>
+                                                    <h:link styleClass="user-settingTitle-action text-decoration-none">Edit</h:link>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <ul class="user-settingDetails-list">
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-linked">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262">
+                                                                    <path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"></path>
+                                                                    <path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"></path>
+                                                                    <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"></path>
+                                                                    <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"></path>
+                                                                </svg>
+                                                                Google
+                                                            </p>
+                                                            <p class="user-settingDetails-no">No linked</p>
+                                                            <p class="user-settingDetails-linked mt-3">
+                                                                <svg
+                                                                    viewBox="0 0 30 30"
+                                                                    height="30"
+                                                                    width="30"
+                                                                    y="0px"
+                                                                    x="0px"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                    <path
+                                                                        d="M25.565,9.785c-0.123,0.077-3.051,1.702-3.051,5.305c0.138,4.109,3.695,5.55,3.756,5.55 c-0.061,0.077-0.537,1.963-1.947,3.94C23.204,26.283,21.962,28,20.076,28c-1.794,0-2.438-1.135-4.508-1.135 c-2.223,0-2.852,1.135-4.554,1.135c-1.886,0-3.22-1.809-4.4-3.496c-1.533-2.208-2.836-5.673-2.882-9 c-0.031-1.763,0.307-3.496,1.165-4.968c1.211-2.055,3.373-3.45,5.734-3.496c1.809-0.061,3.419,1.242,4.523,1.242 c1.058,0,3.036-1.242,5.274-1.242C21.394,7.041,23.97,7.332,25.565,9.785z M15.001,6.688c-0.322-1.61,0.567-3.22,1.395-4.247 c1.058-1.242,2.729-2.085,4.17-2.085c0.092,1.61-0.491,3.189-1.533,4.339C18.098,5.937,16.488,6.872,15.001,6.688z"
+                                                                        ></path>
+                                                                </svg>
+                                                                Apple
+                                                            </p>
+                                                            <p class="user-settingDetails-no pt-4">No linked</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="userInfo-servicesSettingItem">
+                                                <h2 class="user-settingTitle">
+                                                    <span>Services authorized to receive this account's information</span>
+                                                    <a class="user-settingTitle-action text-decoration-none" onclick="showSection('servies-authorize')">Edit</a>
+                                                </h2>
+                                                <div class="user-settingDetails">
+                                                    <ul class="user-settingDetails-list">
+                                                        <li class="user-settingDetails-item">
+                                                            <p class="user-settingDetails-linked">
+                                                                No third party services are currently allowed to receive your information.
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="servies-authorize" class="info-box" style="display: none;">
+                                <h1>Services authorized to receive this account's information</h1>
+                                <p class="p-review">This is a list of third party services and applications that are allowed to receive information from this Sun Seeker Account.</p>
+                                <div class="user-setting">
+                                    <div class="userInfo-profileSettingItem">
+                                        <div class="user-settingDetails">
+                                            <ul class="user-settingDetails-list">
+                                                <li class="user-settingDetails-item">
+                                                    <div class="text-center">
+                                                        <p class="user-settingDetails-services">No third party services are currently allowed to receive your information.</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="change-email" class="info-box" style="display: none;">
+                                <h1>Change of e-mail address</h1>
+                                <p class="p-review">Please enter the new e-mail address you would like to use for your account from now on.</p>
+                                <h:form>
+                                    <div class="user-setting">
+                                        <div class="user-setting-body">
+                                            <div class="user-settingForm">
+                                                <div class="user-settingForm-fieldGroup">
+                                                    <label class="user-formLabel">E-mail address</label>
+                                                    <p class="user-settingForm-fixedValue">#{userInfoMB.userEmail}</p>
+                                                </div>
+                                                <div class="user-settingForm-fieldGroup">
+                                                    <label class="user-formLabel">New e-mail address</label>
+                                                    <h:inputText styleClass="user-profileEdit-form" required="true" value="#{userInfoMB.newEmail}"/>
+                                                    <p class="user-formNote">*An e-mail address accessible from a PC or web browser is recommended to create your Sun Seekers Account.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="user-btnBlock">
+                                        <h:link styleClass="c-btn c-btn-medium c-btn-secondary text-decoration-none">Cancel</h:link>
+                                        <h:commandLink action="#{userInfoMB.saveEmail()}" styleClass="c-btn c-btn-primary c-btn-medium text-decoration-none">Submit</h:commandLink>
+                                    </div>
+                                </h:form>
+                            </div>
+                            <div id="change-password" class="info-box" style="display: none;">
+                                <h1>Change password</h1>
+                                <p class="p-review">Please enter a new password.</p>
+                                <h:form id="changepassFrom">
+                                    <div class="user-setting">
+                                        <div class="user-setting-body">
+                                            <div class="user-settingForm">
+                                                <div class="user-settingForm-fieldGroup">
+                                                    <label class="user-formLabel">New password</label>
+                                                    <h:inputSecret id="user-newPass" styleClass="user-profileEdit-form user-profile-pass" required="true" value="#{userInfoMB.newPass}"/>
+                                                    <span class="eye_icon icon-sigin user-profileForm-eye" onclick="togglePasswordVisibility()">
+                                                        <span id="showPassIcon"><i class="fa-solid fa-eye"></i></span>
+                                                        <span id="hidePassIcon" style="display:none;"><i class="fa-solid fa-eye-slash"></i></span>
+                                                    </span>
+                                                </div>
+                                                <div class="user-settingForm-fieldGroup">
+                                                    <label class="user-formLabel">Confirm new password</label>
+                                                    <h:inputSecret id="user-confirmPass" styleClass="user-profileEdit-form user-profile-pass" required="true" value="#{userInfoMB.confirmPass}"/> 
+                                                    <span class="eye_icon icon-sigin user-profileForm-eye" onclick="toggleConfirmPasswordVisibility()">
+                                                        <span id="showConfirmPassIcon"><i class="fa-solid fa-eye"></i></span>
+                                                        <span id="hideConfirmPassIcon" style="display:none;"><i class="fa-solid fa-eye-slash"></i></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="user-btnBlock">
+                                        <h:link styleClass="c-btn c-btn-medium c-btn-secondary text-decoration-none">Cancel</h:link>
+                                        <h:commandLink action="#{userInfoMB.savePass()}" styleClass="c-btn c-btn-primary c-btn-medium text-decoration-none">Submit</h:commandLink>
+                                    </div>
+                                </h:form>
+                            </div>
+                            <div id="promotional-email" class="info-box" style="display: none;">
+                                <h1>Promotional e-mails</h1>
+                                <p class="p-review">Regardless of these settings, Sun Seeker may still sometimes send you e-mails relating to sign-in activity and account security.</p>
+                                <div class="user-setting">
+                                    <div class="userInfo-profileSettingItem">
+                                        <div class="user-settingDetails">
+                                            <ul class="user-settingDetails-list">
+                                                <div class="user-checkBlockList-item">
+                                                    <div class="user-checkBlockList-itemInner">
+                                                        <div class="user-checkBlockList-itemInner-body">
+                                                            <p class="user-checkBlockList-itemInner-text">Recieve product info and promotional e-mails</p>
+                                                            <p id="emailStatus" class="user-checkBlockList-itemInner-status is-active">Receive</p>
+                                                        </div>
+                                                        <div class="user-checkBlockList-itemInner-action">
+                                                            <div class="user-toggleSwitch">
+                                                                <div class="user-toggleSwitch-outline isToggleOn" id="toggleSwitch" onclick="toggleEmail()">
+                                                                    <div class="user-toggleSwitch-inner"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="user-checkBlockList-itemInner">
+                                                        <div class="user-checkBlockList-itemInner-body">
+                                                            <p class="user-checkBlockList-itemInner-text">Recieve questionaires via e-mail</p>
+                                                            <p id="emailStatus2" class="user-checkBlockList-itemInner-status is-active">Receive</p>
+                                                        </div>
+                                                        <div class="user-checkBlockList-itemInner-action">
+                                                            <div class="user-toggleSwitch">
+                                                                <div class="user-toggleSwitch-outline isToggleOn" id="toggleSwitch2" onclick="toggleEmail2()">
+                                                                    <div class="user-toggleSwitch-inner"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="userInfo-servicesSettingItem">
+                                        <h2 class="user-settingTitle">
+                                            <span>Services Using Account Information</span>
+                                            <h:link styleClass="user-settingTitle-action text-decoration-none">Confirm</h:link>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h:outputScript library="js" name="userInfo.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

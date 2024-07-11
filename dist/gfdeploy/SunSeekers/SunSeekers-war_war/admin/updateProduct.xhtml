@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Edit Product</p>
+                            <h:form>
+                                <div class="jdopawJwe-container">
+                                    <div class="jdopawJwe-box">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Information Tour</h6>
+                                                <p class="black-flag label-register"> Tour code</p>
+                                                <h:inputHidden value="#{productMB.updateTour.tourId}"/>
+                                                <h:inputText value="#{productMB.updateTour.tourCode}" styleClass="input-register"/>
+                                                <p class="black-flag label-register"> Price</p>
+                                                <h:inputText value="#{productMB.updateTour.tourPrice}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Tour name</p>
+                                                <h:inputText value="#{productMB.updateTour.tourName}" styleClass="input-register"/>
+                                                <p class="black-flag label-register"> Tour description</p>
+                                                <h:inputTextarea value="#{productMB.updateTour.tourDescription}" styleClass="input-register"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Total date</p>
+                                                <h:inputText value="#{productMB.updateTour.totalDate}" styleClass="input-register"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Information Plane</h6>
+                                                <p class="black-flag label-register"> Plane Departure</p>
+                                                <h:selectOneMenu id="abc" value="#{productMB.updateTourDetail.planeId1.planeId}" styleClass="input-register">
+                                                    <f:selectItems value="#{productMB.showAllPlaneDepart()}" var="plane" itemValue="#{plane.planeId}" itemLabel="#{plane.planeDepart}(#{plane.airCodeDepart}) - #{plane.planeArrive}(#{plane.airCodeArrive})"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Plane Arrive</p>
+                                                <h:selectOneMenu id="cbd" value="#{productMB.updateTourDetail.planeId2.planeId}" styleClass="input-register">
+                                                    <f:selectItems value="#{productMB.showAllPlaneArrive()}" var="plane" itemValue="#{plane.planeId}" itemLabel="#{plane.planeDepart}(#{plane.airCodeDepart}) - #{plane.planeArrive}(#{plane.airCodeArrive})"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                <h6 class="mb-4">Other</h6>
+                                                <p class="black-flag label-register"> Warehouse</p>
+                                                <h:selectOneMenu value="#{productMB.updateTour.wareHouseId.wareHouseId}" styleClass="input-register">
+                                                    <f:selectItems value="#{productMB.showAllWareHouse()}" var="ware" itemValue="#{ware.wareHouseId}" itemLabel="#{ware.wareHouseId} - #{ware.total}"/>
+                                                </h:selectOneMenu>
+                                                <p class="black-flag label-register"> Image</p>
+                                                <h:selectOneMenu value="#{productMB.updateTour.imageId.imageId}" styleClass="input-register">
+                                                    <f:selectItems value="#{productMB.showAllImage()}" var="img" itemValue="#{img.imageId}" itemLabel="#{img.imageId}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Region</p>
+                                                <h:selectOneMenu value="#{productMB.updateTour.regionId.regionId}" styleClass="input-register">
+                                                    <f:selectItems value="#{productMB.findAllRegion()}" var="region" itemValue="#{region.regionId}" itemLabel="#{region.regionName} - #{region.continentId.continentName}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="black-flag label-register ex-cols"> Admin</p>
+                                                <h:selectOneMenu value="#{productMB.updateTour.adminsId.adminsId}" styleClass="input-register">
+                                                    <f:selectItems value="#{productMB.findAllAdmins()}" var="admin" itemValue="#{admin.adminsId}" itemLabel="#{admin.adminsId} - #{admin.adminName}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6">
+                                                <div class="text-center">
+                                                    <h:commandLink action="#{productMB.updatingProduct()}" styleClass="c-btn c-btn-submit c-btn-edit">
+                                                        <f:param name="tourId" value="#{productMB.updateTour.tourId}"/>
+                                                        <f:param name="tourDetailId" value="#{productMB.updateTourDetail.tourDetailId}"/>
+                                                        Update
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

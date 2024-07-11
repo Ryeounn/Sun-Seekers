@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="element-video">
+                    <div id="content">
+                        <h:graphicImage styleClass="img-header img-expage" value="/resources/images/experiences/header-experiences.jpg"/>
+                        <div class="video-overlay images-experiences"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="d-inline-block">
+                            <div class="content-in-video">
+                                <p>#{msg.title_ex}</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div id="intro-expage">
+                        <div class="spacer-extra-small"></div>
+                        <div class="spacer-extra-small"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="space-lager"></div>
+                                    <p data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" class="content-intro-expage">#{msg.intro_ex}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h:link outcome="/login.xhtml" styleClass="button-ex-page slide-in w-inline-block text-decoration-none">
+                                <div class="button-inner">
+                                    <div class="button-diamond">
+                                        <div class="button-diamond-inner">
+                                            <div class="button-diamond-arrow-container">
+                                                <div class="arrow-line">
+                                                    <div class="arrow-head"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button-diamond-hovered">
+                                            <div class="button-diamond-arrow-container">
+                                                <div class="arrow-line arrow-line-white">
+                                                    <div class="arrow-head arrow-head-white"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="button-text">#{msg.booknow}</div>
+                                </div>
+                            </h:link>
+                        </div>
+                    </div>
+
+                    <div id="good-say-ex">
+                        <div class="space-lager"></div>
+                        <div class="header-goodsay">
+                            <h:graphicImage value="/resources/images/apps/tree.png" styleClass="img-goodsay"/>
+                        </div>
+                        <div class="spacer-extra-small"></div>
+                        <div class="content-goodsay">
+                            <p class="goodsay">&ldquo;#{msg.traveldoes}<br/> #{msg.travelhavea}<br/> #{msg.travelreflect}&rdquo;</p>
+                        </div>
+                        <div class="spacer-extra-small"></div>
+                        <div class="footer-goodsay">
+                            <p class="source-goodsay">#{msg.travelsource}</p>
+                        </div>
+                        <div class="space-lager"></div>
+                    </div>
+
+                    <div id="dining">
+                        <div class="half-and-half">
+                            <div class="half">
+                                <div class="heading-container full-wide">
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-dining"></div>
+                                        <div class="detail-dining">#{msg.dining}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-large-dining">#{msg.truly} <br/>#{msg.memorable}<br/>#{msg.dininged}<br/>#{msg.experienced}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="content-dining">#{msg.content_dining}</p>
+                                </div>
+                            </div>
+                            <div class="half half-dining">
+                                <h:graphicImage value="/resources/images/experiences/food.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="perfect" class="cta-section-book-now">
+                        <div class="section flex-centre">
+                            <div class="space-medium"></div>
+                            <div class="detail detail-perfect">#{msg.detail_perfect}</div>
+                            <div class="spacer-extra-small"></div>
+                            <div class="cta-divider"></div>
+                            <div class="spacer-extra-small"></div>
+                            <h2 class="heading-large-perfect text-center title-perfect">#{msg.title_perfect_be}<br/>#{msg.title_perfect_af}</h2>
+                            <div class="spacer-extra-small"></div>
+                            <div class="div-block">
+                                <p class="content-perfect text-center">#{msg.content_perfect}</p>
+                            </div>
+                            <div class="space-lager"></div>
+                        </div>
+                    </div>
+                    <h:outputScript library="js" name="experiences.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

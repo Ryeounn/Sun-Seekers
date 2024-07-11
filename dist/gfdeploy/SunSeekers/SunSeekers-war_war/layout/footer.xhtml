@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body>
+        <div id="footer">
+            <h:graphicImage styleClass="footer-logo" value="/resources/images/apps/logo-apps.png"/>
+            <div class="spacer-extra-small"></div>
+            <div class="footer-columns w-row">
+                <div class="footer-column w-col pd-col w-col-3">
+                    <h:link outcome="/client/home" styleClass="text-link w--current text-decoration-none" value="#{msg.home}"/>
+                    <div class="spacer-extra-small"></div>
+                    <h:link outcome="/client/ourstory" styleClass="text-link w--current text-decoration-none" value="#{msg.ourstory}"/>
+                </div>
+                <div class="footer-column w-col pd-col w-col-3">
+                    <h:link outcome="/client/gastronomy" styleClass="text-link w--current text-decoration-none">#{msg.gastronomy}</h:link>
+                    <div class="spacer-extra-small"></div>
+                    <h:link outcome="/client/experiences" styleClass="text-link w--current text-decoration-none" value="#{msg.experiences}"/>
+                </div>
+                <div class="footer-column w-col pd-col w-col-3">
+                    <h:link outcome="/client/gallery" styleClass="text-link w--current text-decoration-none" value="#{msg.gallery}" />
+                    <div class="spacer-extra-small"></div>
+                    <h:link outcome="/client/explore" styleClass="text-link w--current text-decoration-none">#{msg.explore}</h:link>
+                </div>
+                <div class="footer-column w-col pd-col w-col-3">
+                    <h:link outcome="/client/contact" styleClass="text-link w--current text-decoration-none" value="#{msg.contact}" />
+                    <div class="spacer-extra-small"></div>
+                    <h:link outcome="/client/policy" styleClass="text-link w--current text-decoration-none" value="#{msg.policy}"/>
+                </div>
+            </div>
+            <div class="spacer-extra-small"></div>
+            <div class="footer-small-print">
+                <p>&copy; #{msg.copyright}</p>
+            </div>
+        </div>
+    </h:body>
+</html>

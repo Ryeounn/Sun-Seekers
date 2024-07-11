@@ -1,0 +1,382 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <div id="element-video" class="element-tour tour-background">
+                    <div id="content" class="content-tour">
+                        <h:graphicImage styleClass="img-header img-tour" value="/resources/images/tour/background-tour.jpg"/>
+                        <div class="video-overlay images-tour"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="d-inline-block">
+                            <div class="content-in-tour">
+                                <div class="text-center">
+                                    <p class="content-toured">#{msg.tour_intro}</p>
+                                    <div id="tour-search">
+                                        <div class="tour-box">
+                                            <div class="list_service">
+                                                <i class="fas fa-suitcase-rolling icon-service"></i>
+                                                <h:link outcome="/client/home" value="Tour" styleClass="btn-service text-decoration-none"/>
+                                            </div>
+                                            <div class="spacer-extra-extra-extra-small"></div>
+                                            <div class="spacer-extra-extra-extra-small"></div>
+                                            <div class="spacer-extra-extra-extra-small verhical-line"></div>
+                                            <div class="spacer-extra-small"></div>
+                                            <h:form id="searchTour">
+                                                <div class="select-group">
+                                                    <div class="list_select">
+                                                        <p class="title-select">#{msg.from}</p>
+                                                        <i class="fas fa-plane-departure icon-selected-tour"></i>
+                                                        <h:selectOneMenu id="planeDepart" class="selected-planeDepart" value="#{tourMB.planeDepart}">
+                                                            <f:selectItem itemValue="0" itemLabel="#{msg.depart}"/>
+                                                            <f:selectItems value="#{tourMB.findPlane()}" var="depart"
+                                                                           itemValue="#{depart}" itemLabel="#{depart}"/>
+                                                            <f:ajax listener="#{tourMB.updateArrivalList()}" render="planeArrive"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                    <div class="list_select">
+                                                        <p class="title-select">#{msg.to}</p>
+                                                        <i class="fas fa-plane-arrival icon-selected-city"></i>
+                                                        <h:selectOneMenu id="planeArrive" class="selected-planeDepart" value="#{tourMB.planeArrive}">
+                                                            <f:selectItems value="#{tourMB.findArrive()}" var="local"
+                                                                           itemValue="#{local}" itemLabel="#{local}" />
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                    <div class="list_select">
+                                                        <p class="title-select">#{msg.departDate}</p>
+                                                        <i class="fas fa-calendar-alt icon-selected-date"></i>
+                                                        <p:datePicker id="disabledD2" styleClass="calendar-departure" value="#{tourMB.planeDate}" disabledDays="#{calendarView.invalidDayss}"
+                                                                      disabledDates="#{calendarView.invalidDatess}" placeholder="#{msg.departDate}" readonlyInput="true" />
+                                                    </div>
+                                                    <div class="list_select">
+                                                        <h:commandLink type="submit" value="Search" action="#{tourMB.searchTours()}" styleClass="btn btn-success btn-search">
+                                                            <f:ajax execute="@form" render="results"/>
+                                                            <i class="fas fa-search"></i>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div id="brand-air">
+                                            <p class="trusted-by">#{msg.trustedby}</p>
+                                            <div class="btn btn-air">
+                                                <h:graphicImage styleClass="img-air" value="/resources/images/tour/air/vietnamairline.jpg"/>
+                                            </div>
+                                            <div class="btn btn-air">
+                                                <h:graphicImage styleClass="img-air" value="/resources/images/tour/air/bamboairway.jpg"/>
+                                            </div>
+                                            <div class="btn btn-air">
+                                                <h:graphicImage styleClass="img-air" value="/resources/images/tour/air/singaporeairline.jpg"/>
+                                            </div>
+                                            <div class="btn btn-air">
+                                                <h:graphicImage styleClass="img-air" value="/resources/images/tour/air/chinaairline.jpg"/>
+                                            </div>
+                                            <div class="btn btn-air">
+                                                <h:graphicImage styleClass="img-air" value="/resources/images/tour/air/japanairline.jpg"/>
+                                            </div>
+                                            <div class="btn btn-air">
+                                                <h:graphicImage styleClass="img-air" value="/resources/images/tour/air/evaiar.jpg"/>
+                                            </div>
+                                            <div class="btn btn-air">
+                                                <h:graphicImage styleClass="img-air" value="/resources/images/tour/air/vietjetairline.jpg"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h:panelGroup id="results">
+                        <div class="container-search pb-3">
+                            <c:choose>
+                                <c:when test="#{empty tourMB.planeArrive}">
+                                    <div class="d-blocked">
+                                        <div class="a-popular-tour mt-3 mb-4">
+                                            <p><i class="fas fa-fighter-jet"></i> #{msg.popular_title}</p>
+                                        </div>
+                                        <div>
+                                            <h:form id="popularForm">
+                                                <div class="flex-searched">
+                                                    <h:commandLink action="#{tourMB.selectPopular('BK000')}" styleClass="text-decoration-none tour-choose add-active">
+                                                        <f:ajax execute="@this" render="tourPopular" />
+                                                        #{msg.thailand}
+                                                    </h:commandLink>
+                                                    <h:commandLink action="#{tourMB.selectPopular('SI000')}" styleClass="text-decoration-none tour-choose">
+                                                        #{msg.singapore}
+                                                        <f:ajax execute="@this" render="tourPopular" />
+                                                    </h:commandLink>
+                                                    <h:commandLink action="#{tourMB.selectPopular('SE000')}" styleClass="text-decoration-none tour-choose">
+                                                        #{msg.seoul}
+                                                        <f:ajax execute="@this" render="tourPopular" />
+                                                    </h:commandLink>
+                                                    <h:commandLink action="#{tourMB.selectPopular('JP000')}" styleClass="text-decoration-none tour-choose">
+                                                        #{msg.japan}
+                                                        <f:ajax execute="@this" render="tourPopular" />
+                                                    </h:commandLink>
+                                                    <h:commandLink action="#{tourMB.selectPopular('CN000')}" styleClass="text-decoration-none tour-choose">
+                                                        #{msg.china}
+                                                        <f:ajax execute="@this" render="tourPopular" />
+                                                    </h:commandLink>
+                                                </div>
+                                            </h:form>
+                                            <h:panelGroup id="tourPopular">
+                                                <div class="flex-searched flex-wap">
+                                                    <ui:repeat value="#{tourMB.popularTour}" var="pop">
+                                                        <div class="flex-searched mb-3">
+                                                            <h:link styleClass="text-decoration-none popular-total" outcome="/client/detail?tourId=#{pop.tourId.tourId}">
+                                                                <div class="popular-box">
+                                                                    <h:graphicImage styleClass="popular-img" value="#{pop.tourId.imageId.imgPath}#{pop.tourId.imageId.img6}"/>
+                                                                    <p class="popular-namecom mt-1"><h:graphicImage styleClass="popular-logoair" value="#{pop.planeId1.companyPath}"/> #{pop.planeId1.airlineCompany}</p>
+                                                                    <div class="popular-box-inner">
+                                                                        <p class="popular-namesch">#{pop.planeId1.planeDepart} - #{pop.planeId1.planeArrive}</p>
+                                                                        <p class="popular-date">
+                                                                            <h:outputText value="#{pop.planeId1.planeDate}">
+                                                                                <f:convertDateTime pattern="EEE, dd/MM/YYYY"/>
+                                                                            </h:outputText>
+                                                                        </p>
+                                                                        <p class="popular-price">$#{pop.tourId.tourPrice}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </h:link>
+                                                        </div>
+                                                    </ui:repeat>
+                                                </div>
+                                            </h:panelGroup>
+                                        </div>
+                                        <div class="a-popular-tour mt-5 mb-4">
+                                            <p><i class="fas fa-wind"></i> #{msg.international_title}</p>
+                                        </div>
+                                        <div class="flex-searched flex-wap">
+                                            <div class="escapes-box">
+                                                <h:graphicImage styleClass="escapes-img" value="/resources/images/tour/bali.jpg"/>
+                                                <div class="escapes-box-inner">
+                                                    <p>Bali</p>
+                                                    <h5>#{msg.indonesia}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="escapes-box">
+                                                <h:graphicImage styleClass="escapes-img" value="/resources/images/tour/thailand.jpg"/>
+                                                <div class="escapes-box-inner">
+                                                    <p>Bangkok</p>
+                                                    <h5>#{msg.thailand}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="escapes-box">
+                                                <h:graphicImage styleClass="escapes-img" value="/resources/images/tour/seoul.jpg"/>
+                                                <div class="escapes-box-inner">
+                                                    <p>Seoul</p>
+                                                    <h5>#{msg.seoul}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="escapes-box">
+                                                <h:graphicImage styleClass="escapes-img" value="/resources/images/tour/turkey.jpg"/>
+                                                <div class="escapes-box-inner">
+                                                    <p>Istanbul</p>
+                                                    <h5>#{msg.turkey}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="escapes-box">
+                                                <h:graphicImage styleClass="escapes-img" value="/resources/images/tour/uk.jpg"/>
+                                                <div class="escapes-box-inner">
+                                                    <p>Liverpool</p>
+                                                    <h5>#{msg.uk}</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="a-popular-tour mt-5 mb-4">
+                                            <p><i class="fas fa-question-circle"></i> #{msg.whybook_title}</p>
+                                        </div>
+                                        <div class="pb-5">
+                                            <div class="flex-searched">
+                                                <div class="why-box">
+                                                    <div class="flex-searched">
+                                                        <div class="why-box-icon">
+                                                            <i class="fas fa-clipboard-list"></i>
+                                                        </div>
+                                                        <div>
+                                                            <p class="pt-2"><b>#{msg.why_inner1}</b></p>
+                                                            <p class="why-content-box">#{msg.why_inner_content1}.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="why-box">
+                                                    <div class="flex-searched">
+                                                        <div class="why-box-icon">
+                                                            <i class="fas fa-shield-alt"></i>
+                                                        </div>
+                                                        <div>
+                                                            <p class="pt-2"><b>#{msg.why_inner2}</b></p>
+                                                            <p class="why-content-box">#{msg.why_inner_content2}.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="filter box-sd">
+                                        <div class="box-yourtour">
+                                            <div class="your-tour">
+                                                <i class="fas fa-fighter-jet icon-plane-src"></i>
+                                                <i class="fas fa-fighter-jet icon-plane"></i>
+                                                <p class="filter-header">#{msg.yourTour}</p>
+                                            </div>
+
+                                            <div class="searched-result">
+                                                <div class="flex-searched">
+                                                    <div>
+                                                        <div class="btn btn-primary">
+                                                            1
+                                                        </div>
+                                                    </div>
+                                                    <div class="mx-2">
+                                                        <p class="searched-date">#{tourMB.formattedPlaneDate}</p>
+                                                        <p class="depart-arrive">#{tourMB.planeDepart} <i class="fas fa-arrow-right"></i> #{tourMB.planeArrive}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="spacer-extra-small"></div>
+                                    </div>
+                                    <div class="result-box">
+                                        <p class="title-tour-content">#{msg.besttour}</p>
+                                        <ui:repeat value="#{tourMB.searchTourDetail()}" var="tour">
+                                            <h:form>
+                                                <h:link outcome="/client/detail" styleClass="text-decoration-none linkto-dt">
+                                                    <f:param name="tourId" value="#{tour.tourId.tourId}"/>
+                                                    <div class="tour-box-dt box-sd mt-3">
+                                                        <div class="image-tourbox">
+                                                            <h:graphicImage styleClass="graphic-tour" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img6}"/>
+                                                            <h:graphicImage styleClass="graphic-tour" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img5}"/>
+                                                            <h:graphicImage styleClass="graphic-tour" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img4}"/>
+                                                            <h:graphicImage styleClass="graphic-tour" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img3}"/>
+                                                            <h:graphicImage styleClass="graphic-tour" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img2}"/>
+                                                            <h:graphicImage styleClass="graphic-tour" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img1}"/>
+                                                        </div>
+                                                        <div class="content-tourbox">
+                                                            <div class="flex-searched space-beetween">
+                                                                <p class="name-tour">#{tour.tourId.tourName}</p>
+                                                                <div class="wis-li">
+                                                                </div>
+                                                            </div>
+                                                            <span class="date-tour">#{tour.tourId.totalDate} #{msg.days} #{tour.tourId.totalDate - 1} #{msg.nights}</span>
+                                                            <div class="spacer-extra-extra-extra-small"></div>
+                                                            <div class="flex-searched space-beetween">
+                                                                <p class="company-tour"><h:graphicImage styleClass="company-images" value="#{tour.planeId1.companyPath}"/>#{tour.planeId1.airlineCompany}</p>
+                                                                <p class="price-tour">$#{tour.tourId.tourPrice} <span class="span-price-tour">/#{msg.pax}</span></p>
+                                                            </div>
+                                                            <div class="flex-searched space-beetween">
+                                                                <div class="items-detail">
+                                                                    <div class="toggleLink index-link text-decoration-none" onclick="toggleExtraContent(this, 1)">#{msg.depart}</div>
+                                                                    <div class="toggleLink2 index-link text-decoration-none" onclick="toggleExtraContent(this, 2)">#{msg.arrival}</div>
+                                                                    <div class="toggleLink3 index-link text-decoration-none" onclick="toggleExtraContent(this, 3)">#{msg.benefit}</div>
+                                                                </div>
+                                                                <div class="button-detail">
+                                                                    <h:link outcome="/client/home" value="#{msg.choose}" styleClass="btn btn-primary btn-choose"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="extra-content">
+                                                            <div class="spacer-extra-small"></div>
+                                                            <div class="fight-box">
+                                                                <div class="component-date">
+                                                                    <p class="timedepart">#{tour.planeId1.planeTimeDepart}</p>
+                                                                    <p class="datedepart">#{tourMB.formated(tour.planeId1.planeDate)}</p>
+                                                                    <div class="spacer-extra-small"></div>
+                                                                    <p class="timearrive">#{tour.planeId1.planing}</p>
+                                                                    <div class="spacer-extra-small"></div>
+                                                                    <div class="spacer-extra-extra-extra-small"></div>
+                                                                    <div class="spacer-extra-extra-extra-small"></div>
+                                                                    <p class="timedepart">#{tour.planeId1.planeTimeArrive}</p>
+                                                                    <p class="datedepart">#{tourMB.formated(tour.planeId1.planeDateArrive)}</p>
+                                                                </div>
+                                                                <p class="vehicle-fight"></p>
+                                                                <div class="component-afterver">
+                                                                    <p class="text-affterver">#{tour.planeId1.planeDepart} (#{tour.planeId1.airCodeDepart})</p>
+                                                                    <span class="name-airport">#{tour.planeId1.airNameDepart}</span>
+                                                                    <div class="spacer-extra-small"></div>
+                                                                    <p class="name-company">#{tour.planeId1.airlineCompany} <h:graphicImage styleClass="name-img" value="#{tour.planeId1.companyPath}" /></p>
+                                                                    <p class="number-air">#{tour.planeId1.airNumber} <i class="fas fa-circle icon-dot"></i>#{msg.econo}</p>
+                                                                    <div class="spacer-extra-2-2"></div>
+                                                                    <p class="text-affterver">#{tour.planeId1.planeArrive} (#{tour.planeId1.airCodeArrive})</p>
+                                                                    <span class="name-airport">#{tour.planeId1.airNameArrive}</span>
+                                                                </div>
+                                                                <div class="component-exclamation">
+                                                                    <div class="spacer-extra-small"></div>
+                                                                    <div class="space-lager"></div>
+                                                                    <i class="fas fa-info-circle icon-extra-info"></i><span class="airbus-extra-name">#{msg.airbus}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="extra-content2">
+                                                            <div class="spacer-extra-small"></div>
+                                                            <div class="fight-box">
+                                                                <div class="component-date">
+                                                                    <p class="timedepart">#{tour.planeId2.planeTimeDepart}</p>
+                                                                    <p class="datedepart">#{tourMB.formated(tour.planeId2.planeDate)}</p>
+                                                                    <div class="spacer-extra-small"></div>
+                                                                    <p class="timearrive">#{tour.planeId2.planing}</p>
+                                                                    <div class="spacer-extra-small"></div>
+                                                                    <div class="spacer-extra-extra-extra-small"></div>
+                                                                    <div class="spacer-extra-extra-extra-small"></div>
+                                                                    <p class="timedepart">#{tour.planeId2.planeTimeArrive}</p>
+                                                                    <p class="datedepart">#{tourMB.formated(tour.planeId2.planeDateArrive)}</p>
+                                                                </div>
+                                                                <p class="vehicle-fight"></p>
+                                                                <div class="component-afterver">
+                                                                    <p class="text-affterver">#{tour.planeId2.planeDepart} (#{tour.planeId2.airCodeDepart})</p>
+                                                                    <span class="name-airport">#{tour.planeId2.airNameDepart}</span>
+                                                                    <div class="spacer-extra-small"></div>
+                                                                    <p class="name-company">#{tour.planeId2.airlineCompany} <h:graphicImage styleClass="name-img" value="#{tour.planeId2.companyPath}" /></p>
+                                                                    <p class="number-air">#{tour.planeId2.airNumber} <i class="fas fa-circle icon-dot"></i>#{msg.econo}</p>
+                                                                    <div class="spacer-extra-2-2"></div>
+                                                                    <p class="text-affterver">#{tour.planeId2.planeArrive} (#{tour.planeId2.airCodeArrive})</p>
+                                                                    <span class="name-airport">#{tour.planeId2.airNameArrive}</span>
+                                                                </div>
+                                                                <div class="component-exclamation">
+                                                                    <div class="spacer-extra-small"></div>
+                                                                    <div class="space-lager"></div>
+                                                                    <i class="fas fa-info-circle icon-extra-info"></i><span class="airbus-extra-name">#{msg.airbus}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="extra-content3">
+                                                            <div class="spacer-extra-small"></div>
+                                                            <div class="benefit-box">
+                                                                <p>1. #{msg.roundtrip} #{tour.planeId1.airCodeDepart} - #{tour.planeId1.airCodeArrive}/ #{tour.planeId2.airCodeDepart} - #{tour.planeId2.airCodeArrive}.</p>
+                                                                <p>2. #{msg.security}.</p>
+                                                                <p>3. #{msg.condition}.</p>
+                                                                <p>4. #{msg.sight}.</p>
+                                                                <p>5. #{msg.serving}.</p>
+                                                                <p>6. #{msg.meal}.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </h:link>
+                                            </h:form>
+                                        </ui:repeat>
+                                        <div class="spacer-extra-small"></div>
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                    </h:panelGroup>
+                </div>
+                <h:outputScript library="js" name="tour.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

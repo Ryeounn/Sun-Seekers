@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="element-video">
+                    <div id="content">
+                        <h:graphicImage styleClass="img-header img-expage" value="/resources/images/explore/explore.jpg"/>
+                        <div class="video-overlay images-experiences"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="d-inline-block">
+                            <div class="content-in-video">
+                                <p>#{msg.explore}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="intro-gastronomy">
+                    <div class="space-lager"></div>
+                    <p data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" class="content-intro">#{msg.explore_title}</p>
+                    <div class="spacer-extra-small"></div>
+                </div>
+                <div id="bestseller">
+                    <div class="signposting slide-in">
+                        <div class="signposting-rule-best"></div>
+                        <div class="detail-best">#{msg.bestseller}</div>
+                    </div>
+                    <div class="spacer-extra-small"></div>
+                    <swiper-container class="mySwiper7" loop="true" space-between="10" slides-per-view="4" free-mode="true"
+                                      watch-slides-progress="true">
+                        <ui:repeat value="#{exploreMB.theBestSeller()}" var="tour">
+                            <swiper-slide>
+                                <h:form>
+                                    <h:link styleClass="text-decoration-none color-text" outcome="/client/detail">
+                                        <f:param name="tourId" value="#{tour.tourId.tourId}"/>
+                                        <h:graphicImage styleClass="gp-2" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img1}"/>
+                                        <div class="commend-body">
+                                            <p class="commend-name">#{tour.tourId.tourName}</p>
+                                            <p class="commend-date">#{tour.tourId.totalDate} #{msg.days} #{tour.tourId.totalDate - 1} #{msg.nights}</p>
+                                            <p class="commend-price">$#{tour.tourId.tourPrice}</p>
+                                            <p class="commend-region">#{tour.tourId.regionId.continentId.continentName}</p> 
+                                            <h:commandLink id="icon-ajax" action="#{wishListMb.findWish()}" styleClass="link-wishlist">
+                                                <f:param name="tourId" value="#{tour.tourId.tourId}"/>
+                                                <f:param name="userId" value="#{loginMB.userReg.userId}"/>
+                                                <f:ajax execute="@this" render="icon-ajax"/>
+                                                <h:panelGroup rendered="#{empty wishListMb.findById(tour.tourId.tourId, loginMB.userReg.userId)}" class="far fa-heart"></h:panelGroup>
+                                                <h:panelGroup rendered="#{!empty wishListMb.findById(tour.tourId.tourId, loginMB.userReg.userId)}" class="fas fa-heart"></h:panelGroup>
+                                            </h:commandLink>
+                                        </div>
+                                    </h:link>
+                                </h:form>
+                            </swiper-slide>
+                        </ui:repeat>
+                    </swiper-container>
+                </div>
+                <div id="good-say">
+                    <div class="space-lager"></div>
+                    <div class="header-goodsay-ex">
+                        <h:graphicImage value="/resources/images/apps/tree.png" styleClass="img-goodsay"/>
+                    </div>
+                    <div class="spacer-extra-small"></div>
+                    <div class="content-goodsay-ex">
+                        <p class="goodsay">#{msg.goodsay_ex}</p>
+                    </div>
+                    <div class="spacer-extra-small"></div>
+                    <div class="footer-goodsay-ex">
+                        <p class="source-goodsay">#{msg.travelsource}</p>
+                    </div>
+                    <div class="space-lager"></div>
+                </div>
+                <div id="ex-pl" class="mt-5 pb-5">
+                    <div class="signposting slide-in">
+                        <div class="signposting-rule-ex-pl"></div>
+                        <div class="detail-ex-pl">#{msg.thetour}</div>
+                    </div>
+                    <div class="spacer-extra-small"></div>
+                    <swiper-container class="mySwiper6" loop="true" space-between="10" slides-per-view="4" free-mode="true"
+                                      watch-slides-progress="true">
+                        <ui:repeat value="#{homeMB.theTour()}" var="tour">
+                            <swiper-slide>
+                                <h:form>
+                                    <h:link styleClass="text-decoration-none color-text" outcome="/client/detail">
+                                        <f:param name="tourId" value="#{tour.tourId.tourId}"/>
+                                        <h:graphicImage styleClass="gp-2" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img1}"/>
+                                        <div class="commend-body">
+                                            <p class="commend-name">#{tour.tourId.tourName}</p>
+                                            <p class="commend-date">#{tour.tourId.totalDate} #{msg.days} #{tour.tourId.totalDate - 1} #{msg.nights}</p>
+                                            <p class="commend-price">$#{tour.tourId.tourPrice}</p>
+                                            <p class="commend-region">#{tour.tourId.regionId.continentId.continentName}</p> 
+                                            <h:commandLink id="icon-ajax" action="#{wishListMb.findWish()}" styleClass="link-wishlist">
+                                                <f:param name="tourId" value="#{tour.tourId.tourId}"/>
+                                                <f:param name="userId" value="#{loginMB.userReg.userId}"/>
+                                                <f:ajax execute="@this" render="icon-ajax"/>
+                                                <h:panelGroup rendered="#{empty wishListMb.findById(tour.tourId.tourId, loginMB.userReg.userId)}" class="far fa-heart"></h:panelGroup>
+                                                <h:panelGroup rendered="#{!empty wishListMb.findById(tour.tourId.tourId, loginMB.userReg.userId)}" class="fas fa-heart"></h:panelGroup>
+                                            </h:commandLink>
+                                        </div>
+                                    </h:link>
+                                </h:form>
+                            </swiper-slide>
+                        </ui:repeat>
+                    </swiper-container>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@6.8.4/swiper-bundle.min.js"></script>
+                <link href="https://cdn.jsdelivr.net/npm/swiper@11.0.7/swiper-bundle.min.css" rel="stylesheet"/>
+                <h:outputScript library="js" name="explore.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

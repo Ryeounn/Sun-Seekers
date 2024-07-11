@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Images</p>
+                            <h:form id="productForm">
+                                <div class="jdopawJwe-container">
+                                    <div class="jdopawJwe-box">
+                                        <div class="flex-searched space-bet">
+                                            <div class="flex-searched">
+                                                <h:link outcome="/admin/createImage" styleClass="c-btn c-btn-set">
+                                                    <span class="material-symbols-outlined">add_circle</span>
+                                                    Create
+                                                </h:link>
+                                                <div class="jdopawJwe-page">
+                                                    <h:commandLink action="#{imagesMB.previousPage()}" disabled="#{imagesMB.currentPage == 1}">
+                                                        <f:ajax render="@form"/>
+                                                        <h:outputText value="&#xf053;" styleClass="fa-solid" escape="false"/>
+                                                    </h:commandLink> 
+                                                    <h:outputText value=" Page #{imagesMB.currentPage} of #{imagesMB.totalPages} " class="textpage"/> 
+                                                    <h:commandLink action="#{imagesMB.nextPage()}" disabled="#{imagesMB.currentPage == imagesMB.totalPages}">
+                                                        <f:ajax render="@form"/>
+                                                        <h:outputText value="&#xf054;" styleClass="fa-solid" escape="false"/>
+                                                    </h:commandLink>
+                                                </div>   
+                                            </div>
+                                            <div class="flex-searched kdmfkd-div">
+                                                <p style="opacity: 0;">Search</p>
+                                            </div>
+                                        </div>
+                                        <div class="jdopawJwe-inner">
+                                            <div class="row mt-4 jdopawJwe-bet">
+                                                <div class="col-md-1">
+                                                    <p>Image 1</p>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <p>Image 2</p>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-1">
+                                                    <p>Image 3</p>
+                                                </div>
+                                                
+                                                <div class="col-md-1">
+                                                    <p>Image 4</p>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-1">
+                                                    <p>Image 5</p>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <p>Image 6</p>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-1">
+                                                    <div class="text-center">
+                                                        Update
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="text-center">
+                                                        Delete
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ui:repeat value="#{imagesMB.images}" var="img">
+                                                <div class="row mt-3 pt-3 jdopawJwe-bet">
+                                                    <div class="col-md-1">
+                                                        <div class="kdoasko-box">
+                                                            <div class="image-tourbox">
+                                                                <h:graphicImage styleClass="jdopawJwe-inner-img" value="#{img.imgPath}#{img.img1}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="kdoasko-box">
+                                                            <div class="image-tourbox">
+                                                                <h:graphicImage styleClass="jdopawJwe-inner-img" value="#{img.imgPath}#{img.img2}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-1">
+                                                        <div class="kdoasko-box">
+                                                            <div class="image-tourbox">
+                                                                <h:graphicImage styleClass="jdopawJwe-inner-img" value="#{img.imgPath}#{img.img3}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="kdoasko-box">
+                                                            <div class="image-tourbox">
+                                                                <h:graphicImage styleClass="jdopawJwe-inner-img" value="#{img.imgPath}#{img.img4}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-1">
+                                                        <div class="kdoasko-box">
+                                                            <div class="image-tourbox">
+                                                                <h:graphicImage styleClass="jdopawJwe-inner-img" value="#{img.imgPath}#{img.img5}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="kdoasko-box">
+                                                            <div class="image-tourbox">
+                                                                <h:graphicImage styleClass="jdopawJwe-inner-img" value="#{img.imgPath}#{img.img6}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-1">
+                                                        <div class="text-center">
+                                                            <h:commandLink action="#{imagesMB.findById()}" styleClass="c-btn c-btn-set c-btn-delete c-btn-table c-btn-edit">
+                                                                <f:ajax render="@form"/>
+                                                                <f:param name="imgId" value="#{img.imageId}"/>
+                                                                <span class="material-symbols-outlined">edit</span>
+                                                            </h:commandLink>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="text-center">
+                                                            <h:commandLink id="deleteBtn" action="#{imagesMB.deleteImage(img.imageId)}" styleClass="c-btn c-btn-set c-btn-delete c-btn-table">
+                                                                <f:ajax render="@form"/>
+                                                                <span class="material-symbols-outlined">delete</span>
+                                                            </h:commandLink>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ui:repeat>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                            <div class="spacer-extra-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <h:outputScript library="js" name="product.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

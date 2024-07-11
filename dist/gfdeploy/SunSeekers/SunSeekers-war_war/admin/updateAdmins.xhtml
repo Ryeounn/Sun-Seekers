@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Edit Admins</p>
+                            <div class="jdopawJwe-container">
+                                <div class="jdopawJwe-box">
+                                    <h:form>
+                                        <div class="row">
+                                            <div class="col-md-6"></div>
+                                            <div class="col-md-6">
+                                                <p class="black-flag label-register"> Full name</p>
+                                                <h:inputText value="#{adminMB.adminser.adminName}" styleClass="input-register"/>
+                                                <p class="black-flag label-register mt-2"> Birthday</p>
+                                                <h:inputText value="#{adminMB.adminser.adminDob}" styleClass="input-register">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                                </h:inputText>
+                                                <p class="black-flag label-register mt-2"> E-mail</p>
+                                                <h:inputText value="#{adminMB.adminser.adminEmail}" styleClass="input-register"/>
+                                                <p class="black-flag label-register mt-2"> Phone</p>
+                                                <h:inputText value="#{adminMB.adminser.adminPhone}" styleClass="input-register"/>
+                                                <p class="black-flag label-register mt-2"> Address</p>
+                                                <h:inputText value="#{adminMB.adminser.adminAddress}" styleClass="input-register"/>
+                                                <div class="text-center">
+                                                    <h:commandLink action="#{adminMB.updateAdmins()}" styleClass="c-btn c-btn-submit c-btn-edit">
+                                                        <f:ajax execute="@form"/>
+                                                        <f:param name="adminId" value="#{adminMB.adminser.adminsId}"/>
+                                                        Update
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

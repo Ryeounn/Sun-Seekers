@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Edit User</p>
+                            <div class="jdopawJwe-container">
+                                <div class="jdopawJwe-box">
+                                    <h:form>
+                                        <div class="row">
+                                            <div class="col-md-6">
+<!--                                                <div class="text-center">
+                                                    <h:graphicImage styleClass="update-img-user mt-5" value="#{manageUser.usered.userPath}#{manageUser.usered.userPhoto}"/>
+                                                </div>-->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="flex-searched mt-2">
+                                                    <div class="w-half">
+                                                        <p class="black-flag label-register"> First name</p>
+                                                        <h:inputText value="#{manageUser.usered.userFName}" styleClass="input-register"/>
+                                                    </div>
+                                                    <div class="w-half">
+                                                        <p class="black-flag label-register"> Last name</p>
+                                                        <h:inputText value="#{manageUser.usered.userLName}" styleClass="input-register"/>
+                                                    </div>
+                                                </div>
+                                                <p class="black-flag label-register mt-2"> E-mail</p>
+                                                <h:inputText value="#{manageUser.usered.userEmail}" styleClass="input-register"/>
+                                                <p class="black-flag label-register mt-2"> Birthday</p>
+                                                <h:inputText value="#{manageUser.usered.userDob}" styleClass="input-register">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                                </h:inputText>
+                                                <p class="black-flag label-register mt-2"> Age</p>
+                                                <h:inputText value="#{manageUser.usered.userAge}" styleClass="input-register"/>
+                                                <p class="black-flag label-register mt-2"> Gender</p>
+                                                <h:selectOneMenu styleClass="input-register" value="#{manageUser.usered.userGender}">
+                                                    <f:selectItem itemValue="Unknown" itemLabel="Unknown"/>
+                                                    <f:selectItem itemValue="Male" itemLabel="Male"/>
+                                                    <f:selectItem itemValue="Female" itemLabel="Female"/>
+                                                </h:selectOneMenu>
+                                                <p class="black-flag label-register mt-2"> Phone</p>
+                                                <h:inputText value="#{manageUser.usered.userPhone}" styleClass="input-register"/>
+                                                <p class="black-flag label-register mt-2"> Passport</p>
+                                                <h:inputText value="#{manageUser.usered.passPort}" styleClass="input-register"/>
+                                                <p class="black-flag label-register mt-2"> Address</p>
+                                                <h:inputText value="#{manageUser.usered.userAddress}" styleClass="input-register"/>
+                                                <p class="black-flag label-register mt-2"> City</p>
+                                                <h:inputText value="#{manageUser.usered.userCity}" styleClass="input-register"/>
+                                                <div class="text-center">
+                                                    <h:commandLink action="#{manageUser.updatingUser()}" styleClass="c-btn c-btn-submit c-btn-edit">
+                                                        <f:ajax execute="@form"/>
+                                                        <f:param name="userId" value="#{manageUser.usered.userId}"/>
+                                                        Update
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

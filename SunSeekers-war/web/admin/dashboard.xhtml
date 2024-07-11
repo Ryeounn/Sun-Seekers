@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdiglfMo">
+                    <i class="fas fa-cog" id="toggleButton"></i>
+                    <div id="modal-dash" class="modal-dash">
+                        <div class="modal-content-dash">
+                            <p>Dark Mode</p>
+                            <span class="close" onclick="closeModal();">&times;</span>
+                            <label class="bb8-toggle">
+                                <input class="bb8-toggle__checkbox toggle-switch" id="toggle" type="checkbox"/>
+                                <div class="bb8-toggle__container">
+                                    <div class="bb8-toggle__scenery">
+                                        <div class="bb8-toggle__star"></div>
+                                        <div class="bb8-toggle__star"></div>
+                                        <div class="bb8-toggle__star"></div>
+                                        <div class="bb8-toggle__star"></div>
+                                        <div class="bb8-toggle__star"></div>
+                                        <div class="bb8-toggle__star"></div>
+                                        <div class="bb8-toggle__star"></div>
+                                        <div class="tatto-1"></div>
+                                        <div class="tatto-2"></div>
+                                        <div class="gomrassen"></div>
+                                        <div class="hermes"></div>
+                                        <div class="chenini"></div>
+                                        <div class="bb8-toggle__cloud"></div>
+                                        <div class="bb8-toggle__cloud"></div>
+                                        <div class="bb8-toggle__cloud"></div>
+                                    </div>
+                                    <div class="bb8">
+                                        <div class="bb8__head-container">
+                                            <div class="bb8__antenna"></div>
+                                            <div class="bb8__antenna"></div>
+                                            <div class="bb8__head"></div>
+                                        </div>
+                                        <div class="bb8__body" id="bb8Body"></div>
+                                    </div>
+                                    <div class="artificial__hidden">
+                                        <div class="bb8__shadow"></div>
+                                    </div>
+                                </div>
+                            </label>
+                            <p>Custom</p>
+                            <div class="flex-searched djapsdJda">
+                                <div class="input-custom-color darkness">
+
+                                </div>
+                                <div class="input-custom-color brown">
+
+                                </div>
+                                <div class="input-custom-color grey">
+
+                                </div>
+                                <div class="input-custom-color blue">
+
+                                </div>
+                                <div class="input-custom-color violet">
+
+                                </div>
+                                <div class="input-custom-color prima">
+
+                                </div>
+                                <div class="input-custom-color green">
+
+                                </div>
+                                <div class="input-custom-color orange">
+
+                                </div>
+                                <div class="input-custom-color red">
+
+                                </div>
+                                <div class="input-custom-color white">
+
+                                </div>
+                            </div>
+                            <div class="flex-searched djapsdJda mt-3">
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                                <div class="input-custom-color">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Dashboard</p>
+                            <div class="flex-searched">
+                                <div class="jdoasDof-inner flex-searched">
+                                    <div class="jdoasDof-body flex-searched">
+                                        <div class="jdoasDof-div-icono">
+                                            <div class="icon-big icon-primary text-center">
+                                                <span class="material-symbols-outlined icons-big-inner">bar_chart</span>
+                                            </div>
+                                        </div>
+                                        <div class="jdoasDof-div-text">
+                                            <p class="jdoasDof-title">Revenue</p>
+                                            <p class="jdoasDof-value">$#{dashboardMB.sumRevenue()}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jdoasDof-inner flex-searched">
+                                    <div class="jdoasDof-body flex-searched">
+                                        <div class="jdoasDof-div-icono">
+                                            <div class="icon-big icon-info text-center">
+                                                <span class="material-symbols-outlined icons-big-inner">airplane_ticket</span>
+                                            </div>
+                                        </div>
+                                        <div class="jdoasDof-div-text">
+                                            <p class="jdoasDof-title">Product</p>
+                                            <p class="jdoasDof-value">#{dashboardMB.sumTour()} Tour</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jdoasDof-inner flex-searched">
+                                    <div class="jdoasDof-body flex-searched">
+                                        <div class="jdoasDof-div-icono">
+                                            <div class="icon-big icon-success text-center">
+                                                <span class="material-symbols-outlined icons-big-inner">sell</span>
+                                            </div>
+                                        </div>
+                                        <div class="jdoasDof-div-text">
+                                            <p class="jdoasDof-title">Order</p>
+                                            <p class="jdoasDof-value">#{dashboardMB.sumOrder()} Orders</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jdoasDof-inner flex-searched">
+                                    <div class="jdoasDof-body flex-searched">
+                                        <div class="jdoasDof-div-icono">
+                                            <div class="icon-big icon-violet text-center">
+                                                <span class="material-symbols-outlined icons-big-inner">groups</span>
+                                            </div>
+                                        </div>
+                                        <div class="jdoasDof-div-text">
+                                            <p class="jdoasDof-title">Customer</p>
+                                            <p class="jdoasDof-value">#{dashboardMB.sumUser()} Users</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="jdoasDof-second mt-4">
+                        <div class="flex-searched jfkdjf-block">
+                            <div class="jdoasDof-second-childthis">
+                                <h:form>
+                                    <div class="divs-inner flex-searched space-bet">
+                                        <p>Orders Over Time</p>
+                                        <h:selectOneMenu id="time-order" styleClass="time-order" value="#{dashboardMB.selected}">
+                                            <f:selectItem itemLabel="1 day ago" itemValue="1"/>
+                                            <f:selectItem itemLabel="2 days ago" itemValue="2"/>
+                                            <f:selectItem itemLabel="3 days ago" itemValue="3"/>
+                                            <f:selectItem itemLabel="5 days ago" itemValue="5"/>
+                                            <f:selectItem itemLabel="7 days ago" itemValue="7"/>
+                                            <f:selectItem itemLabel="14 days ago" itemValue="14"/>
+                                            <f:selectItem itemLabel="30 days ago" itemValue="30"/>
+                                            <p:ajax update="chart" listener="#{dashboardMB.fetchOrderData}"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <p:chart id="chart" styleClass="chartLine" type="line" model="#{dashboardMB.orderDataModel}" style="height: 400px"/>
+                                </h:form>
+                            </div>
+                            <div class="jdoasDof-second-childthat">
+                                <div class="divs-inner">
+                                    <p>Revenue</p>
+                                </div>
+                                <p:chart type="bar" model="#{dashboardMB.barModel}" style="height: 400px"/>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                <div id="after-chart" class="flex-searched">
+                    <div class="okwkff-first">
+                        <div class="divs-inner flex-searched space-bet">
+                            <p>New Customers</p>
+                            <span class="material-symbols-outlined dots-icon">more_horiz</span>
+                        </div>
+                        <ui:repeat value="#{dashboardMB.showAllNewUser()}" var="new">
+                            <div class="okwkff-inner">
+                                <div class="okwkff-childo flex-searched space-bet">
+                                    <div class="flex-searched">
+                                        <h:graphicImage value="#{new.userPath}#{new.userPhoto}"/>
+                                        <div>
+                                            <p>#{new.userFName} #{new.userLName}</p>
+                                            <p class="dater-dob">
+                                                <h:outputText value="#{new.userDob}">
+                                                    <f:convertDateTime pattern="EEE, dd/MM/YYYY"/>
+                                                </h:outputText>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h:link outcome="/admin/dashboard"><i class="fas fa-ban"></i></h:link>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                    <div class="okwkff-second">
+                        <div class="divs-inner flex-searched space-bet">
+                            <p>Transaction History</p>
+                            <span class="material-symbols-outlined dots-icon">more_horiz</span>
+                        </div>
+                        <div class="okwkff-childt">
+                            <div class="okwkff-head">
+                                <div class="text-center">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <p>Order Number</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>Date</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>Total</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>Status</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ui:repeat value="#{dashboardMB.showAllOrder()}" var="od">
+                                <div class="okwkff-body">
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <p class="text-center">Order from #{od.userId.userName}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p class="text-center">
+                                                    <h:outputText value="#{od.ordersDate}">
+                                                        <f:convertDateTime pattern="MMM dd, YYYY"/>
+                                                    </h:outputText>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p class="text-center">Total $#{od.totalPrice}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p class="text-center">#{od.orderStatus}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </div>
+                <div class="spacer-extra-2"></div>
+                <h:outputScript library="adminjs" name="dashboard.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

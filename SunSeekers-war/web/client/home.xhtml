@@ -1,0 +1,491 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sun Seekers</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="element-video">
+                    <div id="content">
+                        <p:video
+                            id="headerVideo"    
+                            value="/resources/images/apps/header-video.mp4"
+                            muted="true"
+                            loop="true"
+                            autoplay="true"
+                            styleClass="img-header">
+                            Your browser does not support the video element.
+                            See: <h:outputLink value="https://www.w3schools.com/html/html5_video.asp">HTML5 Video</h:outputLink>
+                        </p:video>
+                        <div class="video-overlay"></div>
+                    </div>
+                    <div id="loading-start" class="loading-overlay">
+                        <div class="loading-content">
+                            <div id="logo-container">
+                                <h:graphicImage id="logo-home" value="/resources/images/apps/logo-apps.png" alt="Logo"/>
+                                <div id="underline">
+                                    <div class="underline-left"></div>
+                                    <div class="underline-right"></div>
+                                </div>
+                                <div class="text-center">
+                                    <h:outputText styleClass="name-overlay" value="#{msg.title_welcome}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="d-inline-block">
+                            <div class="content-in-video">
+                                <p>#{msg.content_video}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="content-main">
+                    <div id="intro">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="space-lager"></div>
+                                    <p data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" class="content-intro">#{msg.intro_home}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="explore">
+                        <div class="space-lager"></div>
+                        <div class="columns flex-stretch w-row">
+                            <div class="column w-col w-col-6 w-col-small-small-stack">
+                                <div class="heading-container full-wide">
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule"></div>
+                                        <div class="detail">#{msg.explore}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-large">#{msg.explore}<br/>#{msg.heading_places}<br/>#{msg.heading_never}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="description-ex padding-right-medium">#{msg.description_explore}</p>
+                                    <div class="spacer-extra-small"></div>
+                                    <h:link outcome="/login.xhtml" styleClass="button slide-in w-inline-block text-decoration-none">
+                                        <div class="button-inner">
+                                            <div class="button-diamond">
+                                                <div class="button-diamond-inner">
+                                                    <div class="button-diamond-arrow-container">
+                                                        <div class="arrow-line">
+                                                            <div class="arrow-head"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="button-diamond-hovered">
+                                                    <div class="button-diamond-arrow-container">
+                                                        <div class="arrow-line arrow-line-white">
+                                                            <div class="arrow-head arrow-head-white"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="button-text">#{msg.explore}</div>
+                                        </div>
+                                    </h:link>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical w-col w-col-6 w-col-small-small-stack">
+                                <div class="location-image-paralax"></div>
+                                <div class="basic-image home-explore"></div>
+                            </div>
+                        </div>
+                        <div class="space-medium"></div>
+                        <div class="space-medium"></div>
+                        <div class="signposting slide-in">
+                            <div class="signposting-rule-tour"></div>
+                            <div class="detail-tour">#{msg.thetour}</div>
+                        </div>
+                        <div class="spacer-extra-small"></div>
+                        <swiper-container class="mySwiper5" loop="true" space-between="10" slides-per-view="4" free-mode="true"
+                                          watch-slides-progress="true">
+                            <ui:repeat value="#{homeMB.theTour()}" var="tour">
+                                <swiper-slide>
+                                    <h:form>
+                                        <h:link styleClass="text-decoration-none color-text" outcome="/client/detail">
+                                            <f:param name="tourId" value="#{tour.tourId.tourId}"/>
+                                            <h:graphicImage styleClass="gp-2" value="#{tour.tourId.imageId.imgPath}#{tour.tourId.imageId.img1}"/>
+                                            <div class="commend-body">
+                                                <p class="commend-name">#{tour.tourId.tourName}</p>
+                                                <p class="commend-date">#{tour.tourId.totalDate} #{msg.days} #{tour.tourId.totalDate - 1} #{msg.nights}</p>
+                                                <p class="commend-price">$#{tour.tourId.tourPrice}</p>
+                                                <p class="commend-region">#{tour.tourId.regionId.continentId.continentName}</p> 
+                                                <h:commandLink id="icon-ajax" action="#{wishListMb.findWish()}" styleClass="link-wishlist">
+                                                    <f:param name="tourId" value="#{tour.tourId.tourId}"/>
+                                                    <f:param name="userId" value="#{loginMB.userReg.userId}"/>
+                                                    <f:ajax execute="@this" render="icon-ajax"/>
+                                                    <h:panelGroup rendered="#{empty wishListMb.findById(tour.tourId.tourId, loginMB.userReg.userId)}" class="far fa-heart"></h:panelGroup>
+                                                    <h:panelGroup rendered="#{!empty wishListMb.findById(tour.tourId.tourId, loginMB.userReg.userId)}" class="fas fa-heart"></h:panelGroup>
+                                                </h:commandLink>
+                                            </div>
+                                        </h:link>
+                                    </h:form>
+                                </swiper-slide>
+                            </ui:repeat>
+                        </swiper-container>
+                    </div>
+                    <div id="gastronomy">
+                        <div class="space-lager"></div>
+                        <div class="columns flex-stretch w-row">
+                            <div class="column w-col w-col-6 w-col-small-small-stack">
+                                <div class="heading-container full-wide">
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-gastronomy"></div>
+                                        <div class="detail-gastronomy">#{msg.thegastronomy}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-large-gastronomy">#{msg.indulgein}<br/>#{msg.exceptional}<br/>#{msg.localcuisine}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                            <div class="column w-col w-col-6">
+                                <div class="spacer-extra-small"></div>
+                                <div class="spacer-extra-small"></div>
+                                <p class="gastronomy-experience">#{msg.content_gastronomy}</p>
+                                <div class="spacer-extra-small"></div>
+                                <h:link outcome="/client/gastronomy" styleClass="button-ex slide-in w-inline-block text-decoration-none">
+                                    <div class="button-inner">
+                                        <div class="button-diamond">
+                                            <div class="button-diamond-inner">
+                                                <div class="button-diamond-arrow-container">
+                                                    <div class="arrow-line">
+                                                        <div class="arrow-head"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="button-diamond-hovered">
+                                                <div class="button-diamond-arrow-container">
+                                                    <div class="arrow-line arrow-line-white">
+                                                        <div class="arrow-head arrow-head-white"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button-text">#{msg.thegastronomy}</div>
+                                    </div>
+                                </h:link>
+                            </div>
+                        </div>
+                        <div class="space-lager"></div>
+                        <h:graphicImage styleClass="gastronomy-img" value="/resources/images/apps/food.jpg" />
+                    </div>
+                    <div id="experiences">
+                        <div class="space-lager"></div>
+                        <div class="space-lager"></div>
+                        <div class="columns flex-stretch w-row">
+                            <div class="column w-col w-col-6 w-col-small-small-stack">
+                                <div class="heading-container full-wide">
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-experiences"></div>
+                                        <div class="detail-experiences">#{msg.experiences}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-large-experiences">#{msg.unforgettable}<br/>#{msg.experiencer}<br/>#{msg.tailored}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="description-experiences padding-right-medium">#{msg.content_experiences}</p>
+                                    <div class="spacer-extra-small"></div>
+                                    <h:link outcome="experiences" styleClass="button-experiences slide-in w-inline-block text-decoration-none">
+                                        <div class="button-inner">
+                                            <div class="button-diamond">
+                                                <div class="button-diamond-inner">
+                                                    <div class="button-diamond-arrow-container">
+                                                        <div class="arrow-line">
+                                                            <div class="arrow-head"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="button-diamond-hovered">
+                                                    <div class="button-diamond-arrow-container">
+                                                        <div class="arrow-line arrow-line-white">
+                                                            <div class="arrow-head arrow-head-white"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="button-text">#{msg.experiences}</div>
+                                        </div>
+                                    </h:link>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                            <div class="w-col w-col-6">
+                                <div class="rows"> 
+                                    <div class="col-umn">
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/1.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.turkey}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/2.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.dubai}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/3.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.hawaii}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/4.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.switzerland}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-umn">
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/8.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.japan}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/9.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.china}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/10.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.italy}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/11.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.usa}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/12.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.indonesia}</div>
+                                        </div>
+                                    </div>  
+
+                                    <div class="col-umn">
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/14.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.maldives}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/15.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.germany}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/16.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.japan}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/17.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.usa}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-umn">
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/21.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.netherland}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/22.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.usa}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/23.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.france}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/24.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.poland}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-umn">
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/7.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.thailand}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/13.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.canada}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/19.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.thailand}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/20.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.seoul}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-umn">
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/5.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.switzerland}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/6.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.china}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/25.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.greece}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/galery/26.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.thailand}</div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h:graphicImage value="/resources/images/tour/asia/kohphiphi1.jpg" style="width:100%"/>
+                                            <div class="country-name">#{msg.thailand}</div>
+                                        </div>
+                                    </div>
+                                </div>   
+                                <div class="spacer-extra-small"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="good-say">
+                    <div class="space-lager"></div>
+                    <div class="header-goodsay">
+                        <h:graphicImage value="/resources/images/apps/logo-apps.png" styleClass="img-goodsay"/>
+                    </div>
+                    <div class="spacer-extra-small"></div>
+                    <div class="content-goodsay">
+                        <p class="goodsay">&ldquo;#{msg.traveldoes}<br/> #{msg.travelhavea}<br/> #{msg.travelreflect}&rdquo;</p>
+                    </div>
+                    <div class="spacer-extra-small"></div>
+                    <div class="footer-goodsay">
+                        <p class="source-goodsay">#{msg.travelsource}</p>
+                    </div>
+                    <div class="space-lager"></div>
+                </div>
+                <div id="location">
+                    <div class="half-and-half">
+                        <div class="half">
+                            <div class="heading-container full-wide">
+                                <div class="signposting slide-in">
+                                    <div class="signposting-rule-location"></div>
+                                    <div class="detail-location">#{msg.ourlocation}</div>
+                                </div>
+                                <div class="spacer-extra-small"></div>
+                                <h2 class="heading-large-location">#{msg.getting}</h2>
+                                <div class="spacer-extra-small"></div>
+                                <p class="location-address padding-right-medium">#{msg.header_address}<br/>#{msg.footer_address}</p>
+                                <div class="spacer-extra-small"></div>
+                                <p class="location-tel padding-right-medium">#{msg.tel}</p>
+                                <p class="location-mail padding-right-medium">ryeoun.eun@gmail.com</p>
+                                <div class="spacer-extra-small"></div>
+                                <h:link outcome="/client/contact" styleClass="button-location slide-in w-inline-block text-decoration-none">
+                                    <div class="button-inner">
+                                        <div class="button-diamond">
+                                            <div class="button-diamond-inner">
+                                                <div class="button-diamond-arrow-container">
+                                                    <div class="arrow-line">
+                                                        <div class="arrow-head"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="button-diamond-hovered">
+                                                <div class="button-diamond-arrow-container">
+                                                    <div class="arrow-line arrow-line-white">
+                                                        <div class="arrow-head arrow-head-white"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button-text">#{msg.getting}</div>
+                                    </div>
+                                </h:link>
+                            </div>
+                        </div>
+                        <div class="half">
+                            <div class="basic-image absolute-image location-image"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="booking">
+                    <div class="half-and-half">
+                        <div class="half booking-half-left">
+                            <div class="heading-container full-wide">
+                                <div class="signposting slide-in">
+                                    <div class="signposting-rule-booking"></div>
+                                    <div class="detail-booking">#{msg.reservations}</div>
+                                </div>
+                            </div>
+                            <div class="spacer-extra-small"></div>
+                            <h2 class="heading-large-booking">#{msg.booking} <br/> #{msg.yourtour}<br/>#{msg.today}</h2>
+                            <div class="spacer-extra-small"></div>
+                            <p class="booking-sub padding-right-medium">#{msg.early}</p>
+                            <div class="spacer-extra-small"></div>
+                            <h:link outcome="/client/tour" styleClass="button-booking slide-in w-inline-block text-decoration-none">
+                                <div class="button-inner booking-half-left">
+                                    <div class="button-diamond booking-half-left">
+                                        <div class="button-diamond-inner">
+                                            <div class="button-diamond-arrow-container">
+                                                <div class="arrow-line arrow-line-white">
+                                                    <div class="arrow-head arrow-head-white"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button-diamond-hovered">
+                                            <div class="button-diamond-arrow-container">
+                                                <div class="arrow-line arrow-line-white">
+                                                    <div class="arrow-head arrow-head-white"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="button-text">#{msg.discover}</div>
+                                </div>
+                            </h:link>
+                        </div>
+                        <div class="half">
+                            <div class="why-book-direct slide in">
+                                <div class="heading-medium">#{msg.whybook}</div>
+                                <div class="spacer-extra-small"></div>
+                                <ul class="list">
+                                    <li class="list-item">
+                                        <div class="heading-small">#{msg.bestprice}</div>
+                                        <div class="spacer-extra-extra-extra-small"></div>
+                                        <p class="heading-extra-small">#{msg.content_price}</p>
+                                        <div class="spacer-extra-small"></div>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="heading-small">#{msg.exclusive}</div>
+                                        <div class="spacer-extra-extra-extra-small"></div>
+                                        <p class="heading-extra-small">#{msg.content_exclusive}</p>
+                                        <div class="spacer-extra-small"></div>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="heading-small">#{msg.hidden}</div>
+                                        <div class="spacer-extra-extra-extra-small"></div>
+                                        <p class="heading-extra-small">#{msg.content_hidden}</p>
+                                        <div class="spacer-extra-small"></div>
+                                    </li>
+                                </ul>
+                                <h:link styleClass="button-secondary text-decoration-none" outcome="/client/tour">
+                                    #{msg.booknow}
+                                    <div class="secondary-button-arrow">
+                                        <div class="arrow-line arrow-line-white">
+                                            <div class="arrow-head arrow-head-white"></div>
+                                        </div>
+                                    </div>
+                                </h:link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@6.8.4/swiper-bundle.min.js"></script>
+                <link href="https://cdn.jsdelivr.net/npm/swiper@11.0.7/swiper-bundle.min.css" rel="stylesheet"/>
+                <h:outputScript library="js" name="home.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

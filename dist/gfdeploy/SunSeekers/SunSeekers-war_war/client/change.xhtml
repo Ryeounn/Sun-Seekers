@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="change">
+                    <div class="change-box">
+                        <div class="text-center">
+                            <p class="forget-title">#{msg.forget_title}</p>
+                        </div>
+                        <div class="forget-box">
+                            <div class="forget-box-inner">
+                                <h:form id="changeForm">
+                                    <div class="forget-box-formgroup">
+                                        <label class="forget-label">#{msg.change_Newpass}</label>
+                                        <h:inputSecret styleClass="forget-input inputSecret-input" id="newPassword" value="#{emailMB.newPassword}"/>
+                                        <span class="eye_icon icon-register icon-inputSecret" onclick="togglelity()">
+                                            <span id="showbIcon"><i class="fa-solid fa-eye"></i></span>
+                                            <span id="hidebIcon" style="display:none;"><i class="fa-solid fa-eye-slash"></i></span>
+                                        </span>
+                                    </div>
+                                    <div class="forget-box-formgroup">
+                                        <label class="forget-label">#{msg.change_Conpass}</label>
+                                        <h:inputSecret styleClass="forget-input inputSecret-input" id="conPassword" value="#{emailMB.confirmPassword}"/>
+                                        <span class="eye_icon icon-register icon-inputSecret2" onclick="toggleConfirmVisibility()">
+                                            <span id="conshowcIcon"><i class="fa-solid fa-eye"></i></span>
+                                            <span id="conhidecIcon" style="display:none;"><i class="fa-solid fa-eye-slash"></i></span>
+                                        </span>
+                                    </div>
+                                    <div class="c-btnBlock">
+                                        <h:commandLink action="#{emailMB.resetPassword()}" styleClass="text-decoration-none c-btn c-btn-medium c-btn-primary">#{msg.change_btn}</h:commandLink>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h:outputScript library="js" name="change.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Orders</p>
+                            <h:form id="productForm">
+                                <div class="jdopawJwe-container">
+                                    <div class="jdopawJwe-box">
+                                        <div class="flex-searched space-bet">
+                                            <div class="flex-searched">
+                                                <h:link outcome="/admin/updateOrders" styleClass="c-btn c-btn-set c-btn-edit">
+                                                    <span class="material-symbols-outlined">edit</span>
+                                                    Update
+                                                </h:link>
+                                                <div class="jdopawJwe-page">
+                                                    <h:commandLink action="#{orderMB.previousPage()}" disabled="#{orderMB.currentPage == 1}">
+                                                        <f:ajax render="@form"/>
+                                                        <h:outputText value="&#xf053;" styleClass="fa-solid" escape="false"/>
+                                                    </h:commandLink> 
+                                                    <h:outputText value=" Page #{orderMB.currentPage} of #{orderMB.totalPages} " class="textpage"/> 
+                                                    <h:commandLink action="#{orderMB.nextPage()}" disabled="#{orderMB.currentPage == orderMB.totalPages}">
+                                                        <f:ajax render="@form"/>
+                                                        <h:outputText value="&#xf054;" styleClass="fa-solid" escape="false"/>
+                                                    </h:commandLink>
+                                                </div>   
+                                            </div>
+                                            <div class="flex-searched kdmfkd-div">
+                                                <p>Search</p>
+                                                <h:inputText value="#{orderMB.keyword}" styleClass="form-control input-set">
+                                                    <f:ajax event="change" render="@form" listener="#{orderMB.searchOrder()}"/>
+                                                </h:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="jdopawJwe-inner">
+                                            <ui:repeat value="#{orderMB.result}" var="od">
+                                                <div class="row dnasdjiasjdis">
+                                                    <div class="col-md-12">
+                                                        <div class="flex-searched space-bet">
+                                                            <p>Order Code: #{od.ordersId}</p>
+                                                            <p>Order Name: #{od.userId.userFName} #{od.userId.userLName}</p>
+                                                            <p>Order User: #{od.userId.userName}</p>
+                                                            <p>Status: #{od.orderStatus}</p>
+                                                            <p>Order Date: 
+                                                                <h:outputText value="#{od.ordersDate}">
+                                                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                                                </h:outputText>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ui:repeat value="#{orderMB.findOrderDetailById(od.ordersId)}" var="odr">
+                                                    <div class="row pt-3 pb-3 jdopawJwe-bet">
+                                                        <div class="col-md-2">
+                                                            <div class="kdoasko-box">
+                                                                <div class="image-tourbox">
+                                                                    <h:graphicImage styleClass="jdopawJwe-inner-img" value="#{odr.tourId.imageId.imgPath}#{odr.tourId.imageId.img6}"/>
+                                                                    <h:graphicImage styleClass="jdopawJwe-inner-img" style="display: none;" value="#{odr.tourId.imageId.imgPath}#{odr.tourId.imageId.img5}"/>
+                                                                    <h:graphicImage styleClass="jdopawJwe-inner-img" style="display: none;" value="#{odr.tourId.imageId.imgPath}#{odr.tourId.imageId.img4}"/>
+                                                                    <h:graphicImage styleClass="jdopawJwe-inner-img" style="display: none;" value="#{odr.tourId.imageId.imgPath}#{odr.tourId.imageId.img3}"/>
+                                                                    <h:graphicImage styleClass="jdopawJwe-inner-img" style="display: none;" value="#{odr.tourId.imageId.imgPath}#{odr.tourId.imageId.img2}"/>
+                                                                    <h:graphicImage styleClass="jdopawJwe-inner-img" style="display: none;" value="#{odr.tourId.imageId.imgPath}#{odr.tourId.imageId.img1}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <p>#{odr.tourId.tourName}</p>
+                                                            <p class="detail-totaldate mt-2 mb-5">#{odr.tourId.totalDate} Days #{odr.tourId.totalDate - 1} Nights</p>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                        </div>
+                                                        <div class="col-md-3 text-right">
+                                                            <p>x#{odr.quantity}</p>
+                                                            <p class="jdopawJwe-price">$#{odr.tourId.tourPrice}</p>
+                                                        </div>
+                                                    </div>
+                                                </ui:repeat>
+                                                <div class="gjiwejgnv">
+                                                    <div class="text-right">
+                                                        <p class="mt-3">Total Quantity: x#{od.totalQuantity}</p>
+                                                        <p class="mt-3">Estimated total: <span class="jdopawJwe-price">$#{od.totalPrice}</span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="gjiwejgnv">
+                                                    <p>Payment</p>
+                                                    <p>Name: #{od.paymentId.nameCard}</p>
+                                                    <p>Number Card: #{od.paymentId.numberCard}</p>
+                                                    <p>Date Card: #{od.paymentId.dateCard}</p>
+                                                    <p>Type: #{od.paymentId.typeCard}</p>
+                                                    <p>CVV: #{od.paymentId.cvv}</p>
+                                                    <p></p>
+                                                </div>
+                                            </ui:repeat>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                            <div class="spacer-extra-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <h:outputScript library="js" name="product.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

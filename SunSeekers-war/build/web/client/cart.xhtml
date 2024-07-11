@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <c:choose>
+                    <c:when test="${empty loginMB.userReg}">
+                        <div id="cart">
+                            <div class="cart-box">
+                                <div class="cart-product">
+                                    <p class="your-cart">#{msg.cart_my} (<h:outputText value="0"/> #{msg.product})</p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h:graphicImage styleClass="" value="/resources/images/apps/empty.jpg"/>
+                                <p>#{msg.cart_addf} <h:link outcome="/login">#{msg.login_acc}</h:link></p>
+                            </div>
+                        </div>
+                        <h:outputScript library="js" name="cart.js"/>
+                    </c:when>
+                    <c:otherwise>
+                        <div id="cart">
+                            <div class="cart-box">
+                                <div class="cart-product">
+                                    <p class="your-cart">#{msg.cart_my} (
+                                        <h:panelGroup rendered="#{!empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                            <h:outputText value="#{cartMB.sumQuantity()}"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                            <h:outputText value="0"/>
+                                        </h:panelGroup> #{msg.product})</p>
+                                    <p class="">
+                                        <h:form>
+                                            <h:commandLink action="#{cartMB.deleteAllTour()}" styleClass="remove remove-all text-decoration-none" value="#{msg.remove_all}">
+                                                <f:param name="userId" value="#{loginMB.userReg.userId}"/>
+                                            </h:commandLink>
+                                        </h:form>
+                                    </p>
+                                    <div class="flex-searched">
+                                        <div class="cart-w75">
+                                            <h:panelGroup rendered="#{!empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                                <ui:repeat value="#{cartMB.showAllByUserId()}" var="cart">
+                                                    <div class="all-product-box">
+                                                        <div class="flex-searched">
+                                                            <div class="dc-img">
+                                                                <h:graphicImage value="#{cart.tourId.imageId.imgPath}#{cart.tourId.imageId.img1}" styleClass="cart-img"/>
+                                                            </div>
+                                                            <div class="flex-searched space-beetween infor-box">
+                                                                <div class="dc-infor">
+                                                                    <p class="dc-name">#{cart.tourId.tourName}</p>
+                                                                    <p class="commend-date">#{cart.tourId.totalDate} #{msg.days} #{cart.tourId.totalDate - 1} #{msg.nights}</p>
+                                                                    <h:form>
+                                                                        <div class="flex-searched">
+                                                                            <div class="quantity-box">
+                                                                                <h:commandLink action="#{cartMB.decreaseCart()}" styleClass="btn-descrease text-decoration-none">
+                                                                                    <f:param name="tourId" value="#{cart.tourId.tourId}"/>
+                                                                                    <f:param name="userId" value="#{cartMB.userId}"/>
+                                                                                    <i class="fas fa-minus"></i>
+                                                                                </h:commandLink>
+                                                                                <div class="quantity-number">
+                                                                                    #{cart.quantity}
+                                                                                </div>
+                                                                                <h:commandLink action="#{cartMB.increaseCart()}" styleClass="btn-descrease btn-increase text-decoration-none">
+                                                                                    <f:param name="tourId" value="#{cart.tourId.tourId}"/>
+                                                                                    <f:param name="userId" value="#{cartMB.userId}"/>
+                                                                                    <i class="fas fa-plus"></i>
+                                                                                </h:commandLink>
+                                                                            </div>
+                                                                        </div>
+                                                                    </h:form>
+                                                                </div>
+                                                                <div class="dc-price">
+                                                                    <p class="price">$#{cart.tourId.tourPrice}</p>
+                                                                    <h:form>
+                                                                        <p>
+                                                                            <h:commandLink action="#{cartMB.deleteTour()}" styleClass="remove text-decoration-none" value="#{msg.remove}">
+                                                                                <f:param name="tourId" value="#{cart.tourId.tourId}"/>
+                                                                                <f:param name="userId" value="#{cartMB.userId}"/>
+                                                                            </h:commandLink>
+                                                                        </p>
+                                                                    </h:form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="vehical-line mt-3"></div>
+                                                    </div>
+                                                </ui:repeat>
+                                            </h:panelGroup>
+                                            <h:panelGroup rendered="#{empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                                <div class="text-center">
+                                                    <h:graphicImage styleClass="img-empty" value="/resources/images/apps/empty.jpg"/>
+                                                </div>
+                                            </h:panelGroup>
+                                        </div>
+                                        <div class="order-summary">
+                                            <h5 class="o-summary">#{msg.cart_orsumary}</h5>
+                                            <hr class="hr-summary"/>
+                                            <div class="flex-searched space-beetween">
+                                                <p>#{msg.cart_quantity}</p>
+                                                <p>
+                                                    <h:panelGroup rendered="#{!empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                                        <h:outputText value="#{cartMB.sumQuantity()}"/>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup rendered="#{empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                                        <h:outputText value="0"/>
+                                                    </h:panelGroup>
+                                                </p>
+                                            </div>
+                                            <hr class="hr-summary"/>
+                                            <div class="flex-searched space-beetween">
+                                                <p>#{msg.cart_item}</p>
+                                                <p>
+                                                    <h:panelGroup rendered="#{!empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                                        <h:outputText value="$#{cartMB.sumPrice()}"/>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup rendered="#{empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                                        <h:outputText value="0"/>
+                                                    </h:panelGroup>
+                                                </p>
+                                            </div>
+                                            <hr class="hr-summary"/>
+                                            <div class="flex-searched space-beetween">
+                                                <p>#{msg.cart_tax}</p>
+                                                <p>$0.0</p>
+                                            </div>
+                                            <hr class="hr-summary"/>
+                                            <div class="flex-searched space-beetween es-total">
+                                                <p>#{msg.cart_total}</p>
+                                                <p>
+                                                    <h:panelGroup rendered="#{!empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                                        <h:outputText value="$#{cartMB.sumPrice()}"/>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup rendered="#{empty cartMB.findCartById(loginMB.userReg.userId)}">
+                                                        <h:outputText value="0"/>
+                                                    </h:panelGroup>
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h:link id="openModalLogin" styleClass="btn text-decoration-none btn-cart-checkout" onclick="showModal();"><i class="fas fa-angle-right"></i> Check out</h:link>
+                                                <div id="myModalLogin" class="modal-login">
+                                                    <div class="modal-content-login">
+                                                        <span class="close"><i class="fas fa-times-circle"></i></span>
+                                                        <p class="title-modal-login mx-2 wish-title pb-0"><i class="fas fa-clipboard-check"></i> #{msg.review}</p>
+                                                        <p class="mx-2 title-sub-modal-login mb-2">#{msg.review_title}</p>
+                                                        <div class="box-logined">
+                                                            <div class="header-general">
+                                                                <div class="header-ss">
+                                                                    <ui:repeat value="#{cartMB.showAllByUserId()}" var="check">
+                                                                        <div class="box-co-tour mb-3">
+                                                                            <div class="flex-searched">
+                                                                                <h:graphicImage value="#{check.tourId.imageId.imgPath}#{check.tourId.imageId.img1}" styleClass="img-checkout"/>
+                                                                                <div class="mx-2">
+                                                                                    <p class="checkout-name">#{check.tourId.tourName}</p>
+                                                                                    <p class="quan-checkout">#{msg.review_quan}: #{check.quantity}</p>
+                                                                                    <p class="price-checkout mt-2">$#{check.tourId.tourPrice}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </ui:repeat>
+                                                                    <p class="mt-3 mb-2 review-totalprice">#{msg.cart_total}: $#{cartMB.sumPrice()}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="box-logined mt-2">
+                                                            <h:form>
+                                                                <h:link outcome="/client/checkout" styleClass="btn btn-danger mt-3 mb-2 goto-checkout">
+                                                                    <i class="fas fa-tags"></i> #{msg.gotoCheck}
+                                                                </h:link>
+                                                                <h:link styleClass="btn btn-primary goto-checkout mb-2" outcome="/client/tour">
+                                                                    <i class="fas fa-undo"></i> #{msg.conShop}
+                                                                </h:link>
+                                                            </h:form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="overlayLogin" class="overlayLogin"></div>
+                                            </div>
+                                            <p class="text-center mt-4 cart-method">#{msg.payme}</p>
+                                            <div class="mt-3 flex-searched space-center">
+                                                <div>
+                                                    <h:graphicImage value="/resources/images/apps/visa.png" styleClass="method-visa"/>
+                                                </div>
+                                                <div>
+                                                    <h:graphicImage value="/resources/images/apps/mastercart.png" styleClass="method-master"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 your-cart">#{msg.moretoex}</p>
+                                    <div class="sw-ex-box">
+                                        <swiper-container class="mySwiper4" loop="true" space-between="10" slides-per-view="4" free-mode="true"
+                                                          watch-slides-progress="true">
+                                            <ui:repeat value="#{cartMB.showExplore()}" var="expore">
+                                                <swiper-slide>
+                                                    <h:form>
+                                                        <h:link styleClass="text-decoration-none color-text" outcome="/client/detail">
+                                                            <f:param name="tourId" value="#{expore.tourId.tourId}"/>
+                                                            <h:graphicImage styleClass="gp-2" value="#{expore.tourId.imageId.imgPath}#{expore.tourId.imageId.img1}"/>
+                                                            <div class="commend-body">
+                                                                <p class="commend-name">#{expore.tourId.tourName}</p>
+                                                                <p class="commend-date">Days #{expore.tourId.totalDate} Nights #{expore.tourId.totalDate - 1}</p>
+                                                                <p class="commend-price">$#{expore.tourId.tourPrice}</p>
+                                                                <p class="commend-region">#{expore.tourId.regionId.continentId.continentName}</p>
+                                                                <h:commandLink id="icon-ajax" action="#{wishListMb.findWish()}" styleClass="link-wishlist">
+                                                                    <f:param name="tourId" value="#{expore.tourId.tourId}"/>
+                                                                    <f:param name="userId" value="#{loginMB.userReg.userId}"/>
+                                                                    <f:ajax execute="@this" render="icon-ajax"/>
+                                                                    <h:panelGroup rendered="#{empty wishListMb.findById(expore.tourId.tourId, loginMB.userReg.userId)}" class="far fa-heart"></h:panelGroup>
+                                                                    <h:panelGroup rendered="#{!empty wishListMb.findById(expore.tourId.tourId, loginMB.userReg.userId)}" class="fas fa-heart"></h:panelGroup>
+                                                                </h:commandLink>
+                                                            </div>
+                                                        </h:link>
+                                                    </h:form>
+                                                </swiper-slide>
+                                            </ui:repeat>
+                                        </swiper-container>
+                                    </div>
+                                    <div class="mt-5"></div>
+                                </div>
+                            </div>
+                            <div></div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/swiper@6.8.4/swiper-bundle.min.js"></script>
+                        <link href="https://cdn.jsdelivr.net/npm/swiper@11.0.7/swiper-bundle.min.css" rel="stylesheet"/>
+                        <h:outputScript library="js" name="cart.js"/>
+                    </c:otherwise>
+                </c:choose>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

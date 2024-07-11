@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Schedule</p>
+                            <h:form id="productForm">
+                                <div class="jdopawJwe-container">
+                                    <div class="jdopawJwe-box">
+                                        <div class="flex-searched space-bet">
+                                            <div class="flex-searched">
+                                                <h:link outcome="/admin/createSchedule" styleClass="c-btn c-btn-set">
+                                                    <span class="material-symbols-outlined">add_circle</span>
+                                                    Create
+                                                </h:link>
+                                                <div class="jdopawJwe-page">
+                                                    <h:commandLink action="#{scheduleMB.previousPage()}" disabled="#{scheduleMB.currentPage == 1}">
+                                                        <f:ajax render="@form"/>
+                                                        <h:outputText value="&#xf053;" styleClass="fa-solid" escape="false"/>
+                                                    </h:commandLink> 
+                                                    <h:outputText value=" Page #{scheduleMB.currentPage} of #{scheduleMB.totalPages} " class="textpage"/> 
+                                                    <h:commandLink action="#{scheduleMB.nextPage()}" disabled="#{scheduleMB.currentPage == scheduleMB.totalPages}">
+                                                        <f:ajax render="@form"/>
+                                                        <h:outputText value="&#xf054;" styleClass="fa-solid" escape="false"/>
+                                                    </h:commandLink>
+                                                </div>   
+                                            </div>
+                                            <div class="flex-searched kdmfkd-div">
+                                                <p>Search</p>
+                                                <h:inputText value="#{scheduleMB.keyword}" styleClass="form-control input-set">
+                                                    <f:ajax event="change" render="@form" listener="#{scheduleMB.searchSchedule()}"/>
+                                                </h:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="jdopawJwe-inner">
+                                            <div class="row mt-4 jdopawJwe-bet">
+                                                <div class="col-md-1">
+                                                    Tour
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <p>Date</p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <p>Name</p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <p>Morning</p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <p>Afternoon</p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <p>Evening</p>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="text-center">
+                                                        Update
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="text-center">
+                                                        Delete
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ui:repeat value="#{scheduleMB.result}" var="schedule">
+                                                <div class="row mt-3 pt-3 jdopawJwe-bet">
+                                                    <div class="col-md-1">
+                                                        #{schedule.tourId.tourName}
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <p>#{schedule.SDate}</p>
+                                                        <p>#{schedule.STime}</p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <p>#{schedule.SName}</p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <p class="long--dots">#{schedule.SMorning}</p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <p class="long--dots">#{schedule.SAfternoon}</p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <p class="long--dots">#{schedule.SEverning}</p>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="text-center">
+                                                            <h:commandLink action="#{scheduleMB.findByScheduleId()}" styleClass="c-btn c-btn-set c-btn-delete c-btn-table c-btn-edit">
+                                                                <f:ajax render="@form"/>
+                                                                <f:param name="scheduleId" value="#{schedule.scheduleId}"/>
+                                                                <span class="material-symbols-outlined">edit</span>
+                                                            </h:commandLink>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="text-center">
+                                                            <h:commandLink id="deleteBtn" action="#{scheduleMB.deleteSchedule(schedule.scheduleId)}" styleClass="c-btn c-btn-set c-btn-delete c-btn-table">
+                                                                <f:ajax render="@form"/>
+                                                                <span class="material-symbols-outlined">delete</span>
+                                                            </h:commandLink>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ui:repeat>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                            <div class="spacer-extra-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <h:outputScript library="js" name="product.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

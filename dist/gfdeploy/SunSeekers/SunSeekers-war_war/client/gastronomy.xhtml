@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="element-video">
+                    <div id="content">
+                        <h:graphicImage styleClass="img-header img-expage" value="/resources/images/gastronomy/gastronomy.jpg"/>
+                        <div class="video-overlay images-experiences"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="d-inline-block">
+                            <div class="content-in-video">
+                                <p>#{msg.gastronomy}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="intro-gastronomy">
+                    <div class="space-lager"></div>
+                    <p data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" class="content-intro">#{msg.title_f_gas}<br/>#{msg.title_s_gas}<br/> #{msg.title_a_gas}</p>
+                    <div class="spacer-extra-small"></div>
+                </div>
+                <div id="content-gastronomy">
+                    <div class="section">
+                        <div class="columns flex-stretch w-row">
+                            <div class="column flex-vertical flex-nocenter w-col w-col w-col-6">
+                                <div class="heading-container full-wide side-padding">
+                                    <div class="space-lager"></div>
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-asian"></div>
+                                        <div class="detail-asian">#{msg.asian_cuisine}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-medium heading-asian">#{msg.asian_cuisine_heading}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="content-sub-asian">
+                                        #{msg.asian_cuisine_content}
+                                    </p>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="basic-image-outer">
+                                    <div class="rows"> 
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/china.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/dubai.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/indonesia.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/japan.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/korea.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/malaysia.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>  
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/singapore.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/taiwan.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/asia/vietnam.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-medium"></div>
+                </div>
+
+                <div id="content-gastronomy-europe">
+                    <div class="section">
+                        <div class="columns flex-stretch w-row">
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="basic-image-outer">
+                                    <div class="rows"> 
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/france.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/germany.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/hungari.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/italy.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/netherland.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/norway.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>  
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/portugal.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/spain.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/europe/switzerland.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical flex-nocenter w-col w-col w-col-6">
+                                <div class="heading-container full-wide side-padding">
+                                    <div class="space-lager"></div>
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-europe"></div>
+                                        <div class="detail-europe">#{msg.europe_cuisine}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-medium heading-europe">#{msg.europe_cuisine_heading}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="content-europe">#{msg.europe_cuisine_content}</p>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-medium"></div>
+                </div>
+
+                <div id="content-gastronomy-africa">
+                    <div class="section">
+                        <div class="columns flex-stretch w-row">
+                            <div class="column flex-vertical flex-nocenter w-col w-col w-col-6">
+                                <div class="heading-container full-wide side-padding">
+                                    <div class="space-lager"></div>
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-africa"></div>
+                                        <div class="detail-africa">#{msg.africa_cuisine}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-medium heading-africa">#{msg.africa_cuisine_heading}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="content-africa">
+                                        #{msg.africa_cuisine_content}
+                                    </p>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="basic-image-outer">
+                                    <div class="rows"> 
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/1.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/2.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/3.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/4.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/5.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/6.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>  
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/7.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/8.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/africa/9.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-medium"></div>
+                    </div>
+                </div>
+                <div id="content-gastronomy-australia">
+                    <div class="section">
+                        <div class="columns flex-stretch w-row">
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="basic-image-outer">
+                                    <div class="rows"> 
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/1.jpg" style="width:100%"/>                                          </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/2.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/3.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/4.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/5.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/6.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>  
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/7.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/8.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/australia/9.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical flex-nocenter w-col w-col w-col-6">
+                                <div class="heading-container full-wide side-padding">
+                                    <div class="space-lager"></div>
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-australia"></div>
+                                        <div class="detail-australia">#{msg.australia_cuisine}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-medium heading-australia">#{msg.australia_cuisine_heading}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="content-australia">#{msg.australia_cuisine_content}</p>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-medium"></div>
+                </div>
+                <div id="content-gastronomy-america">
+                    <div class="section">
+                        <div class="columns flex-stretch w-row">
+                            <div class="column flex-vertical flex-nocenter w-col w-col w-col-6">
+                                <div class="heading-container full-wide side-padding">
+                                    <div class="space-lager"></div>
+                                    <div class="signposting slide-in">
+                                        <div class="signposting-rule-american"></div>
+                                        <div class="detail-american">#{msg.american_cuisine}</div>
+                                    </div>
+                                    <div class="spacer-extra-small"></div>
+                                    <h2 class="heading-medium heading-american">#{msg.american_cuisine_heading}</h2>
+                                    <div class="spacer-extra-small"></div>
+                                    <p class="content-american">#{msg.american_cuisine_content}</p>
+                                    <div class="spacer-extra-small"></div>
+                                </div>
+                            </div>
+                            <div class="column flex-vertical w-col w-col w-col-6">
+                                <div class="basic-image-outer">
+                                    <div class="rows"> 
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/1.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/2.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/3.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/4.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/5.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/6.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>  
+
+                                        <div class="col-umn-gas">
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/7.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/8.jpg" style="width:100%"/>
+                                            </div>
+                                            <div class="image-container">
+                                                <h:graphicImage value="/resources/images/gastronomy/america/9.jpg" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-medium"></div>
+                    </div>
+                </div>
+                <h:outputScript library="js" name="gastronomy.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

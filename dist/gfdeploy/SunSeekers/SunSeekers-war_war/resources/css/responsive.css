@@ -1,0 +1,200 @@
+/*==========PC==========*/
+@media (min-width: 64em) {
+
+}
+/*==========TABLET==========*/
+@media(min-width: 46.25em) and (max-width: 63.9375em) {
+    /*==Layout==*/
+    .login-group{
+        padding: 36px 20px;
+    }
+
+    .login-group span{
+        display: none;
+    }
+
+    /*==Home==*/
+    .video-overlay{
+        height: 445px;
+    }
+
+    .content-in-video{
+        font-size: 50px;
+        line-height: 2;
+        top: 15%;
+        font-size: 30px;
+    }
+
+    .content-in-video p {
+        margin-bottom: 0;
+    }
+
+    .name-overlay{
+        left: .8em;
+    }
+
+    .space-lager{
+        height: 5vw;
+    }
+
+    .scroll-home{
+        top: 20%;
+    }
+
+    .content-intro{
+        width: 100%;
+        margin: 0;
+    }
+
+    .description-ex{
+        font-size: 2vw;
+        line-height: 2.5vw;
+    }
+
+    .location-image-paralax{
+        width: 100%;
+        left: 18%;
+    }
+
+    .swiper-image{
+        width: 260px;
+        height: 400px;
+    }
+
+    .overlay-img{
+        width: 260px;
+        height: 400px;
+    }
+
+    .signposting-rule,
+    .signposting-rule-tour,
+    .signposting-rule-location,
+    .signposting-rule-gastronomy,
+    .signposting-rule-experiences,
+    .signposting-rule-booking,
+    .detail,
+    .detail-tour,
+    .detail-location,
+    .detail-gastronomy,
+    .detail-experiences,
+    .detail-booking{
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /*==Experiences==*/
+    .images-experiences{
+        height: 700px;
+    }
+
+    .scroll-experiences{
+        display: none;
+    }
+    
+    /*===Tour===*/
+    .content-toured{
+        margin-top: -15em;
+    }
+    
+    .tour-box{
+        top: -7.5em;
+        left: 0;
+        width: 95%;
+    }
+    
+    .selected-planeDepart{
+        width: 250px;
+    }
+    
+    .icon-selected-city{
+        left: 290px;
+    }
+    
+    .icon-selected-date{
+        left: 550px;
+    }
+    
+    .ui-inputfield {
+        width: 100%;
+    }
+    
+    .container-search{
+        margin-left: 5%;
+        width: 85%;
+    }
+    
+    .flex-wap{
+        flex-wrap: wrap;
+    }
+    
+    .graphic-tour{
+        height: 12.1%;
+    }
+    
+    .depart-arrive{
+        font-size: 14px;
+    }
+    
+    .result-box{
+        width: 76%;
+    }
+    
+    .ui-datepicker.ui-input-overlay{
+        top: 21.5em !important;
+    }
+
+    /*==Ourstory==*/
+
+    /*==Gallery==*/
+
+    /*==Contact==*/
+
+    /*==Cart==*/
+    .es-total{
+        font-size: 20px;
+    }
+
+    .order-summary p{
+        font-size: 14px;
+    }
+
+    /*===Forget===*/
+    .forget-container{
+        width: 90%;
+        margin: 100px 5% 0 5%;
+        padding-bottom: 50px;
+    }
+
+    /*===Verify===*/
+    .input-container-box{
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .txt-code{
+        width: 20%;
+    }
+
+    /*===Change===*/
+    .icon-inputSecret{
+        top: 23.5%;
+        right: 33%;
+    }
+
+    .icon-inputSecret2{
+        top: 32.3%;
+        right: 33%;
+    }
+}
+/*==========MOBILE==========*/
+@media (max-width: 46.24em) {
+    /*==Home==*/
+    .content-in-video{
+        top: 15%;
+    }
+
+    .location-image-paralax{
+        display: none;
+    }
+}

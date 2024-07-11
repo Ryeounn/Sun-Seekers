@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/mainTemplate.xhtml">
+            <ui:define name="body">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <div id="verify">
+                    <div class="verify-box">
+                        <div class="text-center">
+                            <p class="verify-title">#{msg.verify_title}</p>
+                            <p class="">#{msg.verify_subtitle}</p>
+                        </div>
+                        <h:form id="codeForm">
+                            <div class="input-container-box">
+                                <h:inputText styleClass="txt-code" value="#{emailMB.one}"/>
+                                <h:inputText styleClass="txt-code" value="#{emailMB.two}"/>
+                                <h:inputText styleClass="txt-code" value="#{emailMB.three}"/>
+                                <h:inputText styleClass="txt-code" value="#{emailMB.four}"/>
+                                <h:inputText styleClass="txt-code" value="#{emailMB.five}"/>
+                                <h:inputText styleClass="txt-code" value="#{emailMB.six}"/>
+                            </div>
+                            <div class="c-btnBlock mt-5">
+                                <h:commandLink action="#{emailMB.verifyCode()}" styleClass="text-decoration-none c-btn c-btn-medium c-btn-primary">#{msg.verify_btn}</h:commandLink>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+                <h:outputScript library="js" name="verify.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

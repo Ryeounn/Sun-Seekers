@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/layout/adminTemplate.xhtml">
+            <ui:define name="content">
+                <div class="jdoasDof">
+                    <div class="jdoasDof-h">
+                        <div class="jdoasDof-container">
+                            <p class="pt-2 pb-2 jdoasDof-main-content">Information</p>
+                            <div class="jdopawJwe-container">
+                                <div class="jdopawJwe-box">
+                                    <div class="doakdos-box">
+                                        <div class="flex-searched">
+                                            <div>
+                                                <h:graphicImage styleClass="img-yourinfo" value="#{adminInfoMB.admin.adminPath}#{adminInfoMB.admin.adminPhoto}"/>
+                                                <p class="text-center mt-3 akfjsjhd"><h:inputFile /></p>
+                                            </div>
+                                            <div>
+                                                <h3>#{adminInfoMB.admin.adminName}</h3>
+                                                <p class="admin-dob">
+                                                    <h:outputLabel value="#{adminInfoMB.admin.adminDob}">
+                                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                    </h:outputLabel>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h:outputScript library="adminjs" name="managerUser.js"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
